@@ -1,0 +1,7 @@
+- Parallel boiler (`boiler_parallel`): the boiler gets its own block below the heat pump with its own flow and return, joined to the heat pump by tees with a check valve on each flow; heat pump only, boiler only and both move only their own pipes.
+- Hydraulic separator (`hydraulic_separator`) between the heat generators and the diverter valve; the consumers run their own loop behind it, with or without a boiler.
+- Bivalence points (`bivalence_heating`, `bivalence_dhw`) in the standing boiler and the heat pump's alternative point (`alternative_point`) beside the outdoor temperature, as numbers or entities.
+- Hot-water charging pump (`dhw_pump`, `dhw_pump_state`), the circulation loop to the house with its pump (`circulation_line`), and pump names (`pump_labels`, `hc_pump_name`, `dhw_pump_name`, `circulation_pump_name`).
+- Standing pipes keep more colour on light themes (45 % instead of 22 %, from the dark mode Home Assistant reports); `--hfc-idle-mix` sets it in a theme, `--hfc-check-valve` the colour of the check valves.
+- Outdoor-unit drawing `vaillant_pro` for the Vaillant aroTHERM pro (anthracite monoblock); set `unit_style: vaillant_pro`.
+- Rooms or floors of their own in the house overview (`rooms`), up to six rows with name, temperature, target and humidity, independent of the heating circuits.

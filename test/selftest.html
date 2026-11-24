@@ -6997,6 +6997,165 @@
     lc.remove();
   }
 
+  // Parallel boiler, hydraulic separator, hot-water charging pump, circulation loop, pump names, bivalence and alternative point.
+  // Each option stands alone; without them the drawing stays as before.
+  {
+    const ids = { mode: 'sensor.mode', power: 'sensor.hp_power', valve: 'sensor.valve', outdoor: 'sensor.outdoor',
+      boiler_state: 'binary_sensor.boiler', dhw_top: 'sensor.dhw', hc_flow: 'sensor.hc_flow' };
+    const state = (hp, boiler, extra = {}) => toStates({
+      'sensor.mode': hp === 'dhw' ? 'DHW' : hp ? 'Heating' : 'Standby', 'sensor.hp_power': [hp ? '1500' : '0', 'W'],
+      'sensor.valve': hp === 'dhw' ? 'Tank' : 'Room', 'sensor.outdoor': ['4.5', '°C'], 'binary_sensor.boiler': boiler ? 'on' : 'off',
+      'sensor.dhw': ['48', '°C'], 'sensor.hc_flow': ['35', '°C'], ...extra,
+    });
+    const base = { mode_map: { Heating: 'heating', DHW: 'dhw', Standby: 'idle' }, entities: ids };
+    const on = (card, id) => !!card.shadowRoot.getElementById(id)?.classList.contains('on');
+    const has = (card, id) => !!card.shadowRoot.getElementById(id);
+    const text = (card, id) => card.shadowRoot.getElementById(id)?.textContent || '';
+    const throws = (cfg) => { try { document.createElement('heatpump-flow-card').setConfig(cfg); return false; } catch { return true; } };
+
+    // Parallel boiler: its own block below the heat pump, flow and return to tees beside the heat pump, a check valve on each flow.
+    const par = mount({ ...base, boiler_parallel: true }, hassOf(state(true, false))); await wait(20);
+    check(par._parts.boilerParallel && has(par, 'boiler') && par.shadowRoot.getElementById('boiler').classList.contains('parallel')
+      && !has(par, 'f-boiler') && has(par, 'p-boiler-vl') && has(par, 'p-boiler-rl') && has(par, 'p-vl-hp')
+      && par.shadowRoot.querySelectorAll('.check-valve').length === 2, 'parallel boiler: own block, own pipes, two check valves, no box on the flow pipe');
+    check(on(par, 'f-vl-hp') && on(par, 'f-rl') && on(par, 'f-rl-com') && !on(par, 'f-boiler-vl') && !on(par, 'f-boiler-rl')
+      && on(par, 'p-boiler-rl') && !on(par, 'p-boiler-vl'), 'parallel boiler, heat pump only: the boiler stands, its return still shows the water it holds');
+    par.hass = hassOf(state(false, true)); await wait(10);
+    check(par._flowModel().generatorMode === 'boiler_only' && on(par, 'f-boiler-vl') && on(par, 'f-boiler-vl-top') && on(par, 'f-boiler-rl')
+      && on(par, 'f-rl-com') && on(par, 'f-vl') && !on(par, 'f-vl-hp') && !on(par, 'f-rl'), 'parallel boiler alone: its loop and the common pipes flow, the heat pump stretch stands');
+    par.hass = hassOf(state(true, true)); await wait(10);
+    check(['f-vl-hp', 'f-rl', 'f-boiler-vl', 'f-boiler-rl', 'f-vl'].every((id) => on(par, id)), 'parallel boiler with the heat pump: both loops flow');
+    par.remove();
+    const brine = mount({ ...base, boiler_parallel: true, source_type: 'brine' }, hassOf(state(true, false))); await wait(10);
+    check(!brine._parts.boilerParallel && has(brine, 'f-boiler'), 'a ground loop takes the room below the heat pump: the boiler stays in series');
+    brine.remove();
+    check(throws({ boiler_parallel: 'yes' }), 'boiler_parallel must be true or false');
+
+    // Hydraulic separator: between the generators and the valve, without a boiler as well.
+    const sep = mount({ ...base, hydraulic_separator: true, entities: { ...ids, boiler_state: null, hc_pump: 'binary_sensor.hc_pump' } },
+      hassOf(state(true, false, { 'binary_sensor.hc_pump': 'on' }))); await wait(20);
+    check(sep._parts.separator && has(sep, 'separator') && !has(sep, 'boiler') && /^M366 250/.test(sep.shadowRoot.getElementById('p-vl').getAttribute('d'))
+      && on(sep, 'f-vl-hp') && on(sep, 'f-rl-sec'), 'separator alone: drawn between heat pump and valve, no boiler added');
+    sep.hass = hassOf(state(false, false, { 'binary_sensor.hc_pump': 'on' })); await wait(10);
+    check(!on(sep, 'f-vl-hp') && !on(sep, 'f-rl') && on(sep, 'f-hc-vl'), 'separator: the circuit pump runs its own loop while the heat pump stands');
+    check(sep.shadowRoot.getElementById('g-sep-top').getAttribute('stop-color').startsWith('color-mix'), 'separator: water that does not move fades like an idle pipe');
+    sep.remove();
+    const sepBoiler = mount({ ...base, hydraulic_separator: true }, hassOf(state(false, true))); await wait(10);
+    check(sepBoiler._parts.boilerParallel && on(sepBoiler, 'f-vl-com') && on(sepBoiler, 'f-rl-com') && on(sepBoiler, 'f-boiler-vl'),
+      'separator with a boiler: the boiler gets its block and reaches the separator through the common stretch');
+    sepBoiler.remove();
+    check(throws({ hydraulic_separator: true, buffer: true }) && throws({ hydraulic_separator: true, series_buffer: true })
+      && throws({ hydraulic_separator: true, storage: 'combined' }) && throws({ hydraulic_separator: 'yes' }),
+    'a separator excludes a buffer, a series buffer and a combined storage');
+
+    // Hot-water charging pump: turns while the tank charges, or as its own state says.
+    const { boiler_state: _b, ...noBoiler } = ids;
+    const dp = mount({ ...base, entities: noBoiler, dhw_pump: true }, hassOf(state('dhw', false))); await wait(20);
+    check(has(dp, 'impeller-dhw') && on(dp, 'impeller-dhw'), 'charging pump turns while the tank charges');
+    dp.hass = hassOf(state(true, false)); await wait(10);
+    check(!on(dp, 'impeller-dhw'), 'charging pump stands while the heat pump heats the rooms');
+    dp.remove();
+    const dps = mount({ ...base, entities: { ...noBoiler, dhw_pump_state: 'binary_sensor.dhw_pump' } }, hassOf(state(true, false, { 'binary_sensor.dhw_pump': 'on' }))); await wait(10);
+    check(has(dps, 'impeller-dhw') && on(dps, 'impeller-dhw'), 'a pump state entity draws the pump and decides whether it turns');
+    dps.remove();
+    const noTank = mount({ ...base, entities: { mode: ids.mode, power: ids.power }, dhw_pump: true }, hassOf(state(true, false))); await wait(10);
+    check(!has(noTank, 'impeller-dhw'), 'no charging pump without a hot-water tank');
+    noTank.remove();
+
+    // Pump names: the generic name with pump_labels, an own name always, nothing without either.
+    const circ = { ...noBoiler, circulation: 'binary_sensor.circ' };
+    const names = (c) => [...c.shadowRoot.querySelectorAll('.pump-name')].map((t) => t.textContent);
+    const pl = mount({ ...base, entities: circ, dhw_pump: true, circulation_line: true, pump_labels: true }, hassOf(state(true, false, { 'binary_sensor.circ': 'off' }))); await wait(10);
+    check(['DHW pump', 'Circulation pump', 'Heating pump'].every((n) => names(pl).includes(n)), `pump_labels: generic names (${names(pl).join(', ')})`);
+    pl.remove();
+    const own = mount({ ...base, entities: circ, dhw_pump: true, circulation_line: true, hc_pump_name: 'Wilo <Yonos>' }, hassOf(state(true, false, { 'binary_sensor.circ': 'off' }))); await wait(10);
+    check(names(own).join() === 'Wilo <Yonos>', `an own pump name shows without pump_labels, as plain text, and alone (${names(own).join(', ')})`);
+    own.remove();
+    check(throws({ hc_pump_name: 5 }), 'a pump name must be a text');
+
+    // Circulation loop: from the top of the tank to the house and back through the pump, only with the option and an entity.
+    const cl = mount({ ...base, entities: circ, circulation_line: true }, hassOf(state(false, false, { 'binary_sensor.circ': 'on' }))); await wait(10);
+    check(has(cl, 'p-circ-vl') && on(cl, 'f-circ-vl') && on(cl, 'f-circ-rl') && on(cl, 'impeller-circ'), 'circulation on: the loop flows and its pump turns');
+    cl.hass = hassOf(state(false, false, { 'binary_sensor.circ': 'off' })); await wait(10);
+    check(!on(cl, 'f-circ-vl') && !on(cl, 'impeller-circ'), 'circulation off: the loop stands');
+    cl.remove();
+    const noOpt = mount({ ...base, entities: circ }, hassOf(state(false, false, { 'binary_sensor.circ': 'on' }))); await wait(10);
+    check(!has(noOpt, 'p-circ-vl') && has(noOpt, 't-circ'), 'without circulation_line only the circulation label stays, as before');
+    noOpt.remove();
+    const noEnt = mount({ ...base, entities: noBoiler, circulation_line: true }, hassOf(state(false, false))); await wait(10);
+    check(!has(noEnt, 'p-circ-vl'), 'no circulation loop without a circulation entity');
+    noEnt.remove();
+
+    // Bivalence points in the standing boiler, the alternative point under the heat pump; numbers or entities.
+    const bv = mount({ ...base, boiler_parallel: true, bivalence_heating: -5, bivalence_dhw: 'number.biv_dhw', alternative_point: -15 },
+      hassOf(state(true, false, { 'number.biv_dhw': ['0', '°C'] }))); await wait(10);
+    check(/< -5 °C/.test(text(bv, 't-boiler-biv')) && /< 0 °C/.test(text(bv, 't-boiler-biv')), `bivalence points while the boiler stands (${text(bv, 't-boiler-biv')})`);
+    check(/off < -15 °C/.test(text(bv, 't-outdoor-hp')), `alternative point beside the outdoor temperature (${text(bv, 't-outdoor-hp')})`);
+    bv.hass = hassOf(state(false, true, { 'number.biv_dhw': ['0', '°C'] })); await wait(10);
+    check(text(bv, 't-boiler-biv') === '', 'a running boiler shows its values instead of the bivalence points');
+    bv.remove();
+    const plain = mount({ ...base, boiler_parallel: true }, hassOf(state(true, false))); await wait(10);
+    check(text(plain, 't-boiler-biv') === plain._i.boiler_off && !/off </.test(text(plain, 't-outdoor-hp')), 'without the points: "boiler off" and the plain outdoor temperature');
+    plain.remove();
+    check(throws({ bivalence_heating: 'cold' }) && throws({ alternative_point: true }), 'a switch point is a temperature or an entity id');
+
+    // Standing pipes keep more colour on a light background; Home Assistant tells the dark mode.
+    const th = mount(base, { ...hassOf(state(true, false)), themes: { darkMode: false } }); await wait(10);
+    const light = th.style.getPropertyValue('--hfc-idle-auto');
+    th.hass = { ...hassOf(state(true, false)), themes: { darkMode: true } }; await wait(10);
+    check(light === '45%' && th.style.getPropertyValue('--hfc-idle-auto') === '22%', `idle pipes: 45 % on light, 22 % on dark themes (${light})`);
+    th.remove();
+
+    // Editor: the fields follow the configuration; a switch point given as an entity keeps its YAML.
+    const fieldNames = (cfg) => { const out = []; const walk = (list) => (list || []).forEach((f) => { if (f.name) out.push(f.name); walk(f.schema); }); walk(C._formSchema(cfg).schema); return out; };
+    const plainFields = fieldNames({ entities: {} });
+    check(['hydraulic_separator', 'dhw_pump', 'circulation_line', 'pump_labels', 'hc_pump_name', 'dhw_pump_name', 'circulation_pump_name', 'dhw_pump_state'].every((n) => plainFields.includes(n))
+      && !plainFields.includes('boiler_parallel') && !plainFields.includes('bivalence_heating'), 'editor: separator, pumps and names always; boiler options wait for a boiler entity');
+    const boilerFields = fieldNames({ entities: { boiler_state: 'binary_sensor.boiler' }, bivalence_dhw: 'number.biv' });
+    check(['boiler_parallel', 'bivalence_heating', 'alternative_point'].every((n) => boilerFields.includes(n)) && !boilerFields.includes('bivalence_dhw'),
+      'editor: boiler options with a boiler entity; a switch point from an entity has no number field');
+    check(!fieldNames({ entities: {}, buffer: true }).includes('hydraulic_separator') && !fieldNames({ entities: {}, storage: 'combined' }).includes('hydraulic_separator'),
+      'editor: no separator switch beside a buffer or a combined storage');
+    check(['hydraulic_separator', 'boiler_parallel', 'dhw_pump', 'pump_labels', 'bivalence_heating', 'alternative_point', 'dhw_pump_state'].every((k) => HFC_EDITOR.en[k] && HFC_EDITOR.de[k]),
+      'editor: English and German labels for the new fields');
+
+    // aroTHERM pro drawing: its own casing and fan, never taken for the aroTHERM plus.
+    const pro = mount({ ...base, unit_style: 'vaillant_pro' }, hassOf(state(true, false))); await wait(10);
+    check(pro._unitKey() === 'vaillant_pro' && !!pro.shadowRoot.querySelector('.vpro-body') && !pro.shadowRoot.querySelector('.vai-body')
+      && pro.shadowRoot.getElementById('fan')?.classList.contains('vpro-fan') && on(pro, 'fan'), 'unit_style vaillant_pro draws the aroTHERM pro with a turning fan');
+    pro.remove();
+
+    // Rooms or floors of their own: one row each in the house, independent of the circuits; thermostats give current and target.
+    const roomStates = { 'sensor.floor_0': ['19.4', '°C'], 'climate.floor_1': { state: 'heat', attributes: { current_temperature: 21.6, temperature: 21 } },
+      'sensor.floor_1_hum': ['48', '%'], 'sensor.floor_2': 'unavailable' };
+    const rm = mount({ ...base, hc_count: 2, rooms: [{ name: 'Basement', entity: 'sensor.floor_0' },
+      { name: 'Ground <floor>', entity: 'climate.floor_1', target: 'climate.floor_1', humidity: 'sensor.floor_1_hum' },
+      { entity: 'sensor.floor_2' }, { name: 'Attic', target: 'climate.floor_1' }] }, hassOf(state(true, false, roomStates))); await wait(10);
+    const rowNames = [...rm.shadowRoot.querySelectorAll('.house-row-name')].map((t) => t.textContent);
+    check(rowNames.join('|') === 'Basement|Ground <floor>|Room 3|Attic' && !has(rm, 'house-row2'), `rooms: one row per entry, named or numbered, instead of the circuit rows (${rowNames.join(', ')})`);
+    check(text(rm, 't-house-roomr0') === '19.4 °C' && text(rm, 't-house-roomr1') === '21.6 / 21.0 °C · 48 %' && text(rm, 't-house-roomr2') === '– °C'
+      && text(rm, 't-house-roomr3') === 'Target 21.0 °C', `rooms: plain sensor, thermostat with target and humidity, unavailable, target only (${[0, 1, 2, 3].map((x) => text(rm, `t-house-roomr${x}`)).join(' | ')})`);
+    check(rm.shadowRoot.getElementById('house-comfortr1').classList.contains('above') && rm.shadowRoot.getElementById('house-comfortr0').classList.contains('unknown')
+      && rm.shadowRoot.getElementById('house-rowr1').dataset.entity === 'climate.floor_1', 'rooms: comfort dot from current against target; a tap opens the room entity');
+    rm.remove();
+    check(throws({ rooms: 'sensor.x' }) && throws({ rooms: [{ entity: 5 }] }) && throws({ rooms: Array.from({ length: 7 }, () => ({ entity: 'sensor.x' })) })
+      && !throws({ rooms: [{ entity: 'sensor.x' }] }) && !throws({ rooms: [{ name: 'Still empty' }] }), 'rooms: a list of up to six entries of texts');
+    // A row the editor has just added has no sensor yet: it is left out instead of breaking the preview.
+    const half = mount({ ...base, rooms: [{ name: 'New' }, { name: 'Hall', entity: 'sensor.floor_0' }] }, hassOf(state(true, false, roomStates))); await wait(10);
+    check([...half.shadowRoot.querySelectorAll('.house-row-name')].map((t) => t.textContent).join() === 'Hall', 'rooms: an entry without a sensor is skipped');
+    half.remove();
+    const roomField = (() => { let found; const walk = (list) => (list || []).forEach((f) => { if (f.name === 'rooms') found = f; walk(f.schema); }); walk(C._formSchema({ entities: {} }).schema); return found; })();
+    check(roomField?.selector?.object?.multiple && Object.keys(roomField.selector.object.fields).join() === 'name,entity,target,humidity' && HFC_EDITOR.en.rooms && HFC_EDITOR.de.rooms,
+      'editor: rooms as a list with name, temperature, target and humidity');
+
+    // Nothing new without the options.
+    const plainCard = mount(base, hassOf(state(true, false))); await wait(10);
+    check(!plainCard._parts.boilerParallel && !plainCard._parts.separator && !plainCard._parts.dhwPump && !plainCard._parts.circLine
+      && has(plainCard, 'f-boiler') && !has(plainCard, 'separator') && !plainCard.shadowRoot.querySelector('.check-valve, .pump-name'),
+    'without the new options the boiler stays in series and nothing else is added');
+    plainCard.remove();
+  }
+
   // 22. narrow_focus (#4): on a narrow schematic the key values grow, secondary values move to one line under it or are hidden
   {
     const byName = (name, sub = '') => setups.find((s) => s.name === name && s.sub.startsWith(sub));

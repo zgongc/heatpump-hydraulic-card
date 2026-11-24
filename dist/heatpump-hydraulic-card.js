@@ -1897,7 +1897,7 @@ const HFC_I18N = {
   en: {
     not_found: 'No entities of this preset found. Check the integration and the prefix, or open the card editor.',
     start: 'No supported heat pump integration found. Open the card editor to pick a preset or to map your entities.', start_link: 'Supported integrations',
-    title: 'Heat pump', heat_pump: 'Heat pump', boiler: 'Boiler', boiler_off: 'Boiler off', dhw: 'Hot water', buffer: 'Buffer', series_tank: 'Series buffer', combined_tank: 'Combined storage', heating_zone: 'Heating', fresh_water_station: 'Fresh-water station', heating_circuit: 'Heating circuit',
+    title: 'Heat pump', heat_pump: 'Heat pump', boiler: 'Boiler', boiler_off: 'Boiler off', separator: 'Separator', pump_hc: 'Heating pump', pump_dhw: 'DHW pump', pump_circ: 'Circulation pump', hp_off_below: 'off < {t}', dhw: 'Hot water', buffer: 'Buffer', series_tank: 'Series buffer', combined_tank: 'Combined storage', heating_zone: 'Heating', fresh_water_station: 'Fresh-water station', heating_circuit: 'Heating circuit',
     house: 'Rooms', room: 'Room', room_target: 'Room target', humidity: 'Humidity', dew_point: 'Dew point', dew_margin: 'Dew-point margin', dew_warning: 'condensation risk', flow_short: 'Flow', comfort_below: 'below target', comfort_on: 'at target', comfort_above: 'above target', running: 'running', compressor_off: 'Compressor off', source_in: 'Air inlet', outdoor: 'Outdoor',
     energy_missing: 'Energy dashboard: no power sensor for {sources}; energy counters alone cannot show live flow.',
     brine_in: 'Brine in', brine_out: 'Brine out', well_in: 'Well in', well_out: 'Well out',
@@ -1940,7 +1940,7 @@ const HFC_I18N = {
   de: {
     not_found: 'Keine Entitäten dieser Voreinstellung gefunden. Integration und Präfix prüfen oder den Karteneditor öffnen.',
     start: 'Keine unterstützte Wärmepumpen-Integration gefunden. Im Karteneditor eine Voreinstellung wählen oder die Entitäten selbst zuordnen.', start_link: 'Unterstützte Integrationen',
-    title: 'Wärmepumpe', heat_pump: 'Wärmepumpe', boiler: 'Heizkessel', boiler_off: 'Kessel aus', dhw: 'Warmwasser', buffer: 'Puffer', series_tank: 'Reihenpuffer', combined_tank: 'Kombispeicher', heating_zone: 'Heizung', fresh_water_station: 'Frischwasserstation', heating_circuit: 'Heizkreis',
+    title: 'Wärmepumpe', heat_pump: 'Wärmepumpe', boiler: 'Heizkessel', boiler_off: 'Kessel aus', separator: 'Weiche', pump_hc: 'Heizungspumpe', pump_dhw: 'Speicherladepumpe', pump_circ: 'Zirkulationspumpe', hp_off_below: 'aus < {t}', dhw: 'Warmwasser', buffer: 'Puffer', series_tank: 'Reihenpuffer', combined_tank: 'Kombispeicher', heating_zone: 'Heizung', fresh_water_station: 'Frischwasserstation', heating_circuit: 'Heizkreis',
     house: 'Wohnräume', room: 'Raum', room_target: 'Raum-Soll', humidity: 'Luftfeuchte', dew_point: 'Taupunkt', dew_margin: 'Taupunktabstand', dew_warning: 'Kondensationsgefahr', flow_short: 'VL', comfort_below: 'unter Soll', comfort_on: 'im Soll', comfort_above: 'über Soll', running: 'läuft', compressor_off: 'Verdichter aus', source_in: 'Luft-Eintritt', outdoor: 'Außen',
     energy_missing: 'Energie-Dashboard: kein Leistungssensor für {sources}; Energiezähler allein zeigen keinen aktuellen Fluss.',
     brine_in: 'Sole ein', brine_out: 'Sole aus', well_in: 'Brunnen ein', well_out: 'Brunnen aus',
@@ -2226,7 +2226,7 @@ const HFC_EDITOR = {
     power_sources: 'PV / battery / grid', ps_auto: 'Energy dashboard, unless set below', ps_manual: 'Only the sensors below',
     source_type: 'Heat source', src_air: 'Air', src_brine: 'Ground (brine)', src_water: 'Groundwater',
     hc_count: 'Heating circuits', hc2_type: 'Circuit 2 emitter', hc3_type: 'Circuit 3 emitter', hc4_type: 'Circuit 4 emitter', hc5_type: 'Circuit 5 emitter', hc6_type: 'Circuit 6 emitter',
-    unit_style: 'Unit drawing', unit_auto: 'Automatic (from the preset)', unit_generic: 'Generic (fan)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
+    unit_style: 'Unit drawing', unit_auto: 'Automatic (from the preset)', unit_generic: 'Generic (fan)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
     unit_size: 'Size of the unit drawing', size_pana_medium: '1 fan (3 to 9 kW)', size_pana_large: '2 fans (T-CAP, 12 and 16 kW)', size_compact_medium: '1 fan', size_compact_large: '2 fans', size_wide_medium: '4 to 7 kW', size_wide_large: '10 and 12 kW', size_small: '3.5 / 5.5 kW (1 fan, low)', size_medium: '7.5 kW (1 fan)', size_large: '10.5 / 12.5 kW (2 fans)',
     timeline: 'Timeline of the operating mode', timeline_hours: 'Timeline length (hours)', timeline_details: 'Run details under the timeline', timeline_marks: 'Show the badges (e.g. Boost) as extra lanes',
     layout: 'Layout', layout_default: 'Default', layout_compact: 'Compact (narrow columns)', layout_wide: 'Wide (tiles beside the schematic)', layout_wall: 'Wall display (large, controls fade out)',
@@ -2234,7 +2234,7 @@ const HFC_EDITOR = {
     flow_speed: 'Animation speed', source_spread: 'Show source spread',
     theme: 'Card theme', theme_auto: 'Automatic (dashboard)', theme_night: 'Night', theme_contrast: 'High contrast', fullscreen: 'Full-screen button', diagnostic: 'Diagnostic report button',
     wall_timeout: 'Hide controls after (seconds, 0 = never)',
-    hc_flow_label: 'Show circuit flow temperature', hc_return_label: 'Show circuit return temperature', dew_point_margin: 'Minimum dew-point margin (K)', narrow_values: 'Keep tank sub-values, hot-water target, circuit return and flow rates on narrow cards', narrow_focus: 'Phone focus: larger key values on narrow cards, secondary values in one line below', flow_rate_unit: 'Unit for flow rates', buffer_values: 'Buffer temperature emphasis', buffer_values_default: 'Top value prominent (default)', buffer_values_equal: 'All configured values equal', storage: 'Storage', storage_separate: 'Separate hot-water tank and buffer', storage_combined: 'Combined storage (one tank, hot-water zone on top)', buffer: 'Parallel buffer (also without sensors)', dhw_type: 'Hot-water preparation', dhw_type_coil: 'Tank with heat-exchanger coil', dhw_type_fresh_water: 'Fresh-water station (on the buffer or the combined storage)', dhw_type_tank_in_tank: 'Tank in tank (combined storage)', series_buffer: 'Series buffer in the return', series_bypass: 'Series buffer with bypass valve (off: the circuits run in defrost)', primary_pump: 'Primary pump', hc_name: 'Circuit 1 name', hc2_name: 'Circuit 2 name', hc3_name: 'Circuit 3 name', hc4_name: 'Circuit 4 name', hc5_name: 'Circuit 5 name', hc6_name: 'Circuit 6 name',
+    hc_flow_label: 'Show circuit flow temperature', hc_return_label: 'Show circuit return temperature', dew_point_margin: 'Minimum dew-point margin (K)', narrow_values: 'Keep tank sub-values, hot-water target, circuit return and flow rates on narrow cards', narrow_focus: 'Phone focus: larger key values on narrow cards, secondary values in one line below', flow_rate_unit: 'Unit for flow rates', buffer_values: 'Buffer temperature emphasis', buffer_values_default: 'Top value prominent (default)', buffer_values_equal: 'All configured values equal', storage: 'Storage', storage_separate: 'Separate hot-water tank and buffer', storage_combined: 'Combined storage (one tank, hot-water zone on top)', buffer: 'Parallel buffer (also without sensors)', dhw_type: 'Hot-water preparation', dhw_type_coil: 'Tank with heat-exchanger coil', dhw_type_fresh_water: 'Fresh-water station (on the buffer or the combined storage)', dhw_type_tank_in_tank: 'Tank in tank (combined storage)', series_buffer: 'Series buffer in the return', series_bypass: 'Series buffer with bypass valve (off: the circuits run in defrost)', primary_pump: 'Primary pump', hydraulic_separator: 'Hydraulic separator between generators and consumers', boiler_parallel: 'Boiler beside the heat pump with its own pump (parallel)', dhw_pump: 'Charging pump on the hot-water flow', circulation_line: 'Draw the circulation loop to the house', pump_labels: 'Show pump names', hc_pump_name: 'Name of the heating pump', dhw_pump_name: 'Name of the charging pump', circulation_pump_name: 'Name of the circulation pump', bivalence_heating: 'Boiler helps heating below (outdoor °C)', bivalence_dhw: 'Boiler helps hot water below (outdoor °C)', alternative_point: 'Heat pump off below (outdoor °C)', dhw_pump_state: 'Charging pump running (on/off)', rooms: 'Rooms or floors in the house (own rows, up to 6)', room_name: 'Name', hc_name: 'Circuit 1 name', hc2_name: 'Circuit 2 name', hc3_name: 'Circuit 3 name', hc4_name: 'Circuit 4 name', hc5_name: 'Circuit 5 name', hc6_name: 'Circuit 6 name',
     sec_hc2: 'Heating circuit 2', sec_hc3: 'Heating circuit 3', sec_hc4: 'Heating circuit 4', sec_hc5: 'Heating circuit 5', sec_hc6: 'Heating circuit 6', sec_details: 'Details: operation', sec_refrigerant: 'Details: refrigerant circuit', sec_cutouts: 'Details: cut-out counters',
     controls: 'Quick controls (switch, button, select, number …)', details_open: 'Details open by default',
     from_preset: 'Found by the preset', more_fields: 'More fields',
@@ -2328,7 +2328,7 @@ const HFC_EDITOR = {
     power_sources: 'PV / Akku / Netz', ps_auto: 'Energie-Dashboard, außer unten gesetzt', ps_manual: 'Nur die Sensoren unten',
     source_type: 'Wärmequelle', src_air: 'Luft', src_brine: 'Erdreich (Sole)', src_water: 'Grundwasser',
     hc_count: 'Heizkreise', hc2_type: 'Wärmeabgabe Heizkreis 2', hc3_type: 'Wärmeabgabe Heizkreis 3', hc4_type: 'Wärmeabgabe Heizkreis 4', hc5_type: 'Wärmeabgabe Heizkreis 5', hc6_type: 'Wärmeabgabe Heizkreis 6',
-    unit_style: 'Geräte-Zeichnung', unit_auto: 'Automatisch (aus der Voreinstellung)', unit_generic: 'Allgemein (Lüfter)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
+    unit_style: 'Geräte-Zeichnung', unit_auto: 'Automatisch (aus der Voreinstellung)', unit_generic: 'Allgemein (Lüfter)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
     unit_size: 'Größe der Geräte-Zeichnung', size_pana_medium: '1 Lüfter (3 bis 9 kW)', size_pana_large: '2 Lüfter (T-CAP, 12 und 16 kW)', size_compact_medium: '1 Lüfter', size_compact_large: '2 Lüfter', size_wide_medium: '4 bis 7 kW', size_wide_large: '10 und 12 kW', size_small: '3,5 / 5,5 kW (1 Lüfter, niedrig)', size_medium: '7,5 kW (1 Lüfter)', size_large: '10,5 / 12,5 kW (2 Lüfter)',
     timeline: 'Zeitleiste der Betriebsart', timeline_hours: 'Länge der Zeitleiste (Stunden)', timeline_details: 'Laufdetails unter der Zeitleiste', timeline_marks: 'Badges (z. B. Boost) als zusätzliche Spuren zeigen',
     layout: 'Layout', layout_default: 'Standard', layout_compact: 'Kompakt (schmale Spalten)', layout_wide: 'Breit (Kacheln neben dem Schema)', layout_wall: 'Wanddisplay (groß, Bedienelemente blenden aus)',
@@ -2336,7 +2336,7 @@ const HFC_EDITOR = {
     flow_speed: 'Animationsgeschwindigkeit', source_spread: 'Quellenspreizung anzeigen',
     theme: 'Kartendarstellung', theme_auto: 'Automatisch (Dashboard)', theme_night: 'Nacht', theme_contrast: 'Hoher Kontrast', fullscreen: 'Vollbild-Schaltfläche', diagnostic: 'Diagnosebericht-Schaltfläche',
     wall_timeout: 'Bedienelemente ausblenden nach (Sekunden, 0 = nie)',
-    hc_flow_label: 'Heizkreis-Vorlauf anzeigen', hc_return_label: 'Heizkreis-Rücklauf anzeigen', dew_point_margin: 'Mindestabstand zum Taupunkt (K)', narrow_values: 'Speicher-Unterwerte, WW-Soll, Heizkreis-Rücklauf und Volumenströme auf schmalen Karten zeigen', narrow_focus: 'Handy-Fokus: Kernwerte auf schmalen Karten größer, Nebenwerte in einer Zeile darunter', flow_rate_unit: 'Einheit für Volumenströme', buffer_values: 'Gewichtung der Puffertemperaturen', buffer_values_default: 'Oberen Wert hervorheben (Standard)', buffer_values_equal: 'Alle vorhandenen Werte gleich', storage: 'Speicher', storage_separate: 'Getrennter Warmwasserspeicher und Puffer', storage_combined: 'Kombispeicher (ein Speicher, Warmwasserzone oben)', buffer: 'Parallelpuffer (auch ohne Sensoren)', dhw_type: 'Warmwasserbereitung', dhw_type_coil: 'Speicher mit Wärmetauscher-Wendel', dhw_type_fresh_water: 'Frischwasserstation (am Puffer oder Kombispeicher)', dhw_type_tank_in_tank: 'Tank im Tank (Kombispeicher)', series_buffer: 'Reihenpuffer im Rücklauf', series_bypass: 'Reihenpuffer mit Bypass-Ventil (aus: die Heizkreise laufen beim Abtauen)', primary_pump: 'Primärpumpe', hc_name: 'Name Heizkreis 1', hc2_name: 'Name Heizkreis 2', hc3_name: 'Name Heizkreis 3', hc4_name: 'Name Heizkreis 4', hc5_name: 'Name Heizkreis 5', hc6_name: 'Name Heizkreis 6',
+    hc_flow_label: 'Heizkreis-Vorlauf anzeigen', hc_return_label: 'Heizkreis-Rücklauf anzeigen', dew_point_margin: 'Mindestabstand zum Taupunkt (K)', narrow_values: 'Speicher-Unterwerte, WW-Soll, Heizkreis-Rücklauf und Volumenströme auf schmalen Karten zeigen', narrow_focus: 'Handy-Fokus: Kernwerte auf schmalen Karten größer, Nebenwerte in einer Zeile darunter', flow_rate_unit: 'Einheit für Volumenströme', buffer_values: 'Gewichtung der Puffertemperaturen', buffer_values_default: 'Oberen Wert hervorheben (Standard)', buffer_values_equal: 'Alle vorhandenen Werte gleich', storage: 'Speicher', storage_separate: 'Getrennter Warmwasserspeicher und Puffer', storage_combined: 'Kombispeicher (ein Speicher, Warmwasserzone oben)', buffer: 'Parallelpuffer (auch ohne Sensoren)', dhw_type: 'Warmwasserbereitung', dhw_type_coil: 'Speicher mit Wärmetauscher-Wendel', dhw_type_fresh_water: 'Frischwasserstation (am Puffer oder Kombispeicher)', dhw_type_tank_in_tank: 'Tank im Tank (Kombispeicher)', series_buffer: 'Reihenpuffer im Rücklauf', series_bypass: 'Reihenpuffer mit Bypass-Ventil (aus: die Heizkreise laufen beim Abtauen)', primary_pump: 'Primärpumpe', hydraulic_separator: 'Hydraulische Weiche zwischen Erzeugern und Verbrauchern', boiler_parallel: 'Kessel neben der Wärmepumpe mit eigener Pumpe (parallel)', dhw_pump: 'Ladepumpe im Warmwasser-Vorlauf', circulation_line: 'Zirkulationsleitung zum Haus zeichnen', pump_labels: 'Pumpennamen anzeigen', hc_pump_name: 'Name der Heizungspumpe', dhw_pump_name: 'Name der Ladepumpe', circulation_pump_name: 'Name der Zirkulationspumpe', bivalence_heating: 'Kessel hilft beim Heizen unter (außen °C)', bivalence_dhw: 'Kessel hilft beim Warmwasser unter (außen °C)', alternative_point: 'Wärmepumpe aus unter (außen °C)', dhw_pump_state: 'Ladepumpe läuft (ein/aus)', rooms: 'Räume oder Etagen im Haus (eigene Zeilen, bis 6)', room_name: 'Name', hc_name: 'Name Heizkreis 1', hc2_name: 'Name Heizkreis 2', hc3_name: 'Name Heizkreis 3', hc4_name: 'Name Heizkreis 4', hc5_name: 'Name Heizkreis 5', hc6_name: 'Name Heizkreis 6',
     sec_hc2: 'Heizkreis 2', sec_hc3: 'Heizkreis 3', sec_hc4: 'Heizkreis 4', sec_hc5: 'Heizkreis 5', sec_hc6: 'Heizkreis 6', sec_details: 'Details: Betrieb', sec_refrigerant: 'Details: Kältekreis', sec_cutouts: 'Details: Abschaltzähler',
     controls: 'Schnellbedienung (Schalter, Taste, Auswahl, Zahl …)', details_open: 'Details standardmäßig offen',
     from_preset: 'Von der Voreinstellung gefunden', more_fields: 'Weitere Felder',
@@ -2432,7 +2432,7 @@ const HFC_EDITOR = {
     power_sources: 'PV / akumulator / sieć', ps_auto: 'Panel energii, chyba że ustawiono poniżej', ps_manual: 'Tylko poniższe czujniki',
     source_type: 'Źródło ciepła', src_air: 'Powietrze', src_brine: 'Grunt (solanka)', src_water: 'Woda gruntowa',
     hc_count: 'Obiegi grzewcze', hc2_type: 'Emiter obiegu 2', hc3_type: 'Emiter obiegu 3', hc4_type: 'Emiter obiegu 4', hc5_type: 'Emiter obiegu 5', hc6_type: 'Emiter obiegu 6',
-    unit_style: 'Rysunek urządzenia', unit_auto: 'Automatycznie (z presetu)', unit_generic: 'Ogólny (wentylator)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
+    unit_style: 'Rysunek urządzenia', unit_auto: 'Automatycznie (z presetu)', unit_generic: 'Ogólny (wentylator)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
     unit_size: 'Rozmiar Vaillant', size_small: '3.5 / 5.5 kW (1 wentylator, niski)', size_medium: '7.5 kW (1 wentylator)', size_large: '10.5 / 12.5 kW (2 wentylatory)',
     timeline: 'Oś czasu trybu pracy', timeline_hours: 'Długość osi czasu (godziny)', timeline_details: 'Szczegóły pracy pod osią czasu', timeline_marks: 'Pokaż etykiety (np. Podbicie) jako dodatkowe pasy',
     layout: 'Układ', layout_default: 'Domyślny', layout_compact: 'Kompaktowy (wąskie kolumny)', layout_wide: 'Szeroki (kafelki obok schematu)', layout_wall: 'Wyświetlacz ścienny (duży, kontrolki wygaszają się)',
@@ -2562,7 +2562,7 @@ const HFC_EDITOR = {
     power_sources: 'FVE / batéria / sieť', ps_auto: 'Energetický panel, pokiaľ nie je nastavené nižšie', ps_manual: 'Iba senzory nižšie',
     source_type: 'Zdroj tepla', src_air: 'Vzduch', src_brine: 'Zem (nemrznúca zmes)', src_water: 'Podzemná voda',
     hc_count: 'Vykurovacie okruhy', hc2_type: 'Teleso okruhu 2', hc3_type: 'Teleso okruhu 3', hc4_type: 'Teleso okruhu 4', hc5_type: 'Teleso okruhu 5', hc6_type: 'Teleso okruhu 6',
-    unit_style: 'Nákres jednotky', unit_auto: 'Automaticky (z predvoľby)', unit_generic: 'Všeobecná (ventilátor)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
+    unit_style: 'Nákres jednotky', unit_auto: 'Automaticky (z predvoľby)', unit_generic: 'Všeobecná (ventilátor)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
     unit_size: 'Veľkosť Vaillant', size_small: '3.5 / 5.5 kW (1 ventilátor, nízky)', size_medium: '7.5 kW (1 ventilátor)', size_large: '10.5 / 12.5 kW (2 ventilátory)',
     timeline: 'Časová os prevádzkového režimu', timeline_hours: 'Dĺžka časovej osi (hodiny)', timeline_details: 'Podrobnosti behu pod časovou osou', timeline_marks: 'Zobraziť odznaky (napr. Boost) ako extra riadky',
     layout: 'Rozloženie', layout_default: 'Predvolené', layout_compact: 'Kompaktné (úzke stĺpce)', layout_wide: 'Široké (dlaždice vedľa schémy)', layout_wall: 'Nástenný displej (veľký, ovládacie prvky miznú)',
@@ -2692,7 +2692,7 @@ const HFC_EDITOR = {
     power_sources: 'FVE / baterie / síť', ps_auto: 'Energetický panel, pokud není nastaveno níže', ps_manual: 'Pouze senzory níže',
     source_type: 'Zdroj tepla', src_air: 'Vzduch', src_brine: 'Země (nemrznoucí směs)', src_water: 'Podzemní voda',
     hc_count: 'Topné okruhy', hc2_type: 'Těleso okruhu 2', hc3_type: 'Těleso okruhu 3', hc4_type: 'Těleso okruhu 4', hc5_type: 'Těleso okruhu 5', hc6_type: 'Těleso okruhu 6',
-    unit_style: 'Nákres jednotky', unit_auto: 'Automaticky (z předvolby)', unit_generic: 'Obecná (ventilátor)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
+    unit_style: 'Nákres jednotky', unit_auto: 'Automaticky (z předvolby)', unit_generic: 'Obecná (ventilátor)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono',
     unit_size: 'Velikost Vaillant', size_small: '3.5 / 5.5 kW (1 ventilátor, nízký)', size_medium: '7.5 kW (1 ventilátor)', size_large: '10.5 / 12.5 kW (2 ventilátory)',
     timeline: 'Časová osa provozního režimu', timeline_hours: 'Délka časové osy (hodiny)', timeline_details: 'Podrobnosti běhu pod časovou osou', timeline_marks: 'Zobrazit odznaky (např. Boost) jako extra řádky',
     layout: 'Rozvržení', layout_default: 'Výchozí', layout_compact: 'Kompaktní (úzké sloupce)', layout_wide: 'Široké (dlaždice vedle schématu)', layout_wall: 'Nástěnný displej (velký, ovládací prvky mizí)',
@@ -2821,7 +2821,7 @@ const HFC_EDITOR = {
     power_sources: 'PV / accu / net', ps_auto: 'Energiedashboard, tenzij hieronder ingesteld', ps_manual: 'Alleen de sensoren hieronder',
     source_type: 'Warmtebron', src_air: 'Lucht', src_brine: 'Bodem (brine)', src_water: 'Grondwater',
     hc_count: 'Verwarmingsgroepen', hc2_type: 'Afgifte groep 2', hc3_type: 'Afgifte groep 3', hc4_type: 'Afgifte groep 4', hc5_type: 'Afgifte groep 5', hc6_type: 'Afgifte groep 6',
-    unit_style: 'Tekening buitenunit', unit_auto: 'Automatisch (uit de preset)', unit_generic: 'Algemeen (ventilator)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
+    unit_style: 'Tekening buitenunit', unit_auto: 'Automatisch (uit de preset)', unit_generic: 'Algemeen (ventilator)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
     unit_size: 'Grootte van de buitenunit', size_pana_medium: '1 ventilator (3 tot 9 kW)', size_pana_large: '2 ventilatoren (T-CAP, 12 en 16 kW)', size_compact_medium: '1 ventilator', size_compact_large: '2 ventilatoren', size_wide_medium: '4 tot 7 kW', size_wide_large: '10 en 12 kW', size_small: '3,5 / 5,5 kW (1 ventilator, laag)', size_medium: '7,5 kW (1 ventilator)', size_large: '10,5 / 12,5 kW (2 ventilatoren)',
     timeline: 'Tijdlijn van de bedrijfsstand', timeline_hours: 'Lengte tijdlijn (uren)', timeline_details: 'Rundetails onder de tijdlijn', timeline_marks: 'Badges (bijv. Boost) als extra banen tonen',
     layout: 'Opmaak', layout_default: 'Standaard', layout_compact: 'Compact (smalle kolommen)', layout_wide: 'Breed (tegels naast het schema)', layout_wall: 'Wandscherm (groot, bediening verdwijnt)',
@@ -2945,7 +2945,7 @@ const hfcCompressorOn = (s) => ['on', 'true', 'open', 'ein', 'running', 'startin
 const HFC_ENTITY_GROUPS = {
   sec_hp: ['mode', 'status', 'compressor', 'fan_speed', 'defrost', 'power', 'heat', 'flow', 'return', 'volume', 'primary_pump_state', 'source_volume', 'source_in', 'source_out', 'brine_pressure', 'outdoor', 'valve', 'heater', 'pv_boost', 'sg_ready'],
   sec_boiler: ['boiler_state', 'boiler_power', 'boiler_flow'],
-  sec_storage: ['dhw_top', 'dhw_middle', 'dhw_bottom', 'dhw_target', 'dhw_mode', 'circulation', 'circulation_start', 'circulation_end', 'circulation_schedule', 'dhw_loss_sensor', 'dhw_heater', 'dhw_heater_top', 'dhw_heater_middle', 'dhw_heater_bottom', 'buffer_top', 'buffer_middle', 'buffer_bottom', 'buffer_mode', 'buffer_heater', 'buffer_heater_top', 'buffer_heater_middle', 'buffer_heater_bottom', 'bypass_valve', 'solar_collector', 'solar_pump'],
+  sec_storage: ['dhw_top', 'dhw_middle', 'dhw_bottom', 'dhw_target', 'dhw_mode', 'dhw_pump_state', 'circulation', 'circulation_start', 'circulation_end', 'circulation_schedule', 'dhw_loss_sensor', 'dhw_heater', 'dhw_heater_top', 'dhw_heater_middle', 'dhw_heater_bottom', 'buffer_top', 'buffer_middle', 'buffer_bottom', 'buffer_mode', 'buffer_heater', 'buffer_heater_top', 'buffer_heater_middle', 'buffer_heater_bottom', 'bypass_valve', 'solar_collector', 'solar_pump'],
   sec_hc: ['hc_flow', 'hc_return', 'hc_setpoint', 'hc_mode', 'hc_pump', 'hc_volume', 'hc_curve_offset', 'hc_mixer', 'hc_mixer_opening', 'hc_mixer_closing', 'hc_pressure', 'room', 'room_target', 'room_humidity', 'dew_point', 'program'],
   // The room of circuit 1 uses room/room_target; circuits 2 to 6 use their numbered keys in the shared house overview.
   sec_hc2: ['hc2_flow', 'hc2_return', 'hc2_setpoint', 'hc2_mode', 'hc2_pump', 'hc2_volume', 'hc2_curve_offset', 'hc2_mixer', 'hc2_mixer_opening', 'hc2_mixer_closing', 'hc2_room', 'hc2_room_target', 'hc2_room_humidity', 'hc2_dew_point'],
@@ -3011,7 +3011,7 @@ const HFC_KEY_KINDS = Object.fromEntries(Object.entries({
   counter: ['starts_total', 'starts_today', 'aux_starts', 'cutout_high_pressure', 'cutout_low_pressure', 'cutout_temperature'],
   ratio: ['cop_heating_today', 'cop_dhw_today'],
   speed: ['compressor', 'fan_speed', 'compressor_speed'],
-  onoff: ['defrost', 'circulation', 'hc_pump', 'primary_pump_state', 'hc_mixer_opening', 'hc_mixer_closing', 'solar_pump', 'bypass_valve'],
+  onoff: ['defrost', 'circulation', 'hc_pump', 'primary_pump_state', 'dhw_pump_state', 'hc_mixer_opening', 'hc_mixer_closing', 'solar_pump', 'bypass_valve'],
   onoff_power: ['heater', 'boiler_state', ...HFC_TANK_HEATERS, 'pv_boost'],
   valve: ['valve'],
   text: ['mode', 'status', 'dhw_mode', 'buffer_mode', 'hc_mode', 'program', 'sg_ready'],
@@ -3081,8 +3081,10 @@ const HFC_MAP_KEYS = ['valve_map', 'mode_map', 'dhw_mode_map', 'buffer_mode_map'
 // How the tap water is heated: a coil in the tank, a fresh-water station on the storage, or a tank in the combined storage.
 const HFC_DHW_TYPES = ['coil', 'fresh_water', 'tank_in_tank'];
 // Drawing of the outdoor unit: `auto` takes the style of the preset; `unit_size` picks the Vaillant aroTHERM plus class.
-const HFC_UNIT_STYLES = ['auto', 'generic', 'lambda', 'vaillant', 'panasonic', 'viessmann', 'bosch', 'bosch_cs8800i', 'bosch_compact', 'bosch_square', 'bosch_tall', 'bosch_tall_silent', 'buderus', 'buderus_compact', 'buderus_tall', 'buderus_tall_indoor', 'buderus_tall_silent', 'saunier', 'samsung', 'wolf', 'kronoterm', 'alpha_innotec', 'stiebel'];
+const HFC_UNIT_STYLES = ['auto', 'generic', 'lambda', 'vaillant', 'vaillant_pro', 'panasonic', 'viessmann', 'bosch', 'bosch_cs8800i', 'bosch_compact', 'bosch_square', 'bosch_tall', 'bosch_tall_silent', 'buderus', 'buderus_compact', 'buderus_tall', 'buderus_tall_indoor', 'buderus_tall_silent', 'saunier', 'samsung', 'wolf', 'kronoterm', 'alpha_innotec', 'stiebel'];
 const HFC_UNIT_SIZES = ['small', 'medium', 'large'];
+// Rows of the house overview: as many as fit between the roof and the floor.
+const HFC_MAX_ROOMS = 6;
 const HFC_EMITTERS = ['underfloor', 'radiator', 'column'];
 // Wall display: seconds the quick controls and the details toggle stay visible after the last touch or mouse move.
 const HFC_WALL_TIMEOUT = 10;
@@ -3460,7 +3462,26 @@ class HeatpumpFlowCard extends HTMLElement {
               { name: 'dhw_type', selector: { select: { mode: 'dropdown', options: HFC_DHW_TYPES.filter((v) => v !== 'tank_in_tank' || (config && config.storage === 'combined')).map((v) => ({ value: v, label: L[`dhw_type_${v}`] })) } } },
               ...(config && config.storage === 'combined' ? [] : [{ name: 'buffer', selector: { boolean: {} } }, { name: 'series_buffer', selector: { boolean: {} } }]),
               ...(config && config.series_buffer && config.storage !== 'combined' ? [{ name: 'series_bypass', selector: { boolean: {} } }] : []),
+              // A separator is the other kind of hydraulic separation: offered where no buffer is chosen.
+              ...(config && (config.storage === 'combined' || config.buffer || config.series_buffer) ? [] : [{ name: 'hydraulic_separator', selector: { boolean: {} } }]),
+              ...(config && ['boiler_state', 'boiler_power', 'boiler_flow'].some((k) => config.entities?.[k]) ? [
+                { name: 'boiler_parallel', selector: { boolean: {} } },
+                // A switch point can also be an entity (YAML only); then the number field stays away so it is not overwritten.
+                ...['bivalence_heating', 'bivalence_dhw', 'alternative_point'].filter((name) => typeof config[name] !== 'string')
+                  .map((name) => ({ name, selector: { number: { min: -30, max: 30, step: 1, mode: 'box', unit_of_measurement: '°C' } } })),
+              ] : []),
+              { name: 'dhw_pump', selector: { boolean: {} } },
+              { name: 'circulation_line', selector: { boolean: {} } },
+              { name: 'pump_labels', selector: { boolean: {} } },
+              ...['hc_pump_name', 'dhw_pump_name', 'circulation_pump_name'].map((name) => ({ name, selector: { text: {} } })),
               ...['hc_name', 'hc2_name', 'hc3_name', 'hc4_name', 'hc5_name', 'hc6_name'].filter(keep).map((name) => ({ name, selector: { text: {} } })),
+              // Rooms or floors of the house: a list in the editor (Home Assistant's object selector), or YAML.
+              { name: 'rooms', selector: { object: { multiple: true, label_field: 'name', fields: {
+                name: { label: L.room_name, selector: { text: {} } },
+                entity: { label: L.room, selector: { entity: { domain: ['sensor', 'climate'] } } },
+                target: { label: L.room_target, selector: { entity: { domain: ['sensor', 'number', 'input_number', 'climate'] } } },
+                humidity: { label: L.room_humidity, selector: { entity: { domain: 'sensor' } } },
+              } } } },
               { name: 'unit_style', selector: { select: { mode: 'dropdown', options: HFC_UNIT_STYLES.map((v) => ({ value: v, label: L[`unit_${v}`] })) } } },
               ...(config && (config.unit_style === 'vaillant' || ((!config.unit_style || config.unit_style === 'auto') && config.preset === 'vaillant'))
                 ? [{ name: 'unit_size', selector: { select: { mode: 'dropdown', options: HFC_UNIT_SIZES.map((v) => ({ value: v, label: L[`size_${v}`] })) } } }] : []),
@@ -3583,6 +3604,32 @@ class HeatpumpFlowCard extends HTMLElement {
     }
     if (config.series_bypass !== undefined && config.series_bypass !== null && typeof config.series_bypass !== 'boolean') {
       throw new Error('series_bypass must be true or false');
+    }
+    if (config.hydraulic_separator !== undefined && config.hydraulic_separator !== null && typeof config.hydraulic_separator !== 'boolean') {
+      throw new Error('hydraulic_separator must be true or false');
+    }
+    if (config.hydraulic_separator && (config.storage === 'combined' || config.buffer || config.series_buffer)) {
+      throw new Error('hydraulic_separator cannot be used with a buffer, a series buffer or a combined storage');
+    }
+    for (const key of ['hc_pump_name', 'dhw_pump_name', 'circulation_pump_name']) {
+      if (config[key] !== undefined && config[key] !== null && typeof config[key] !== 'string') throw new Error(`${key} must be a text`);
+    }
+    for (const key of ['dhw_pump', 'pump_labels', 'circulation_line']) {
+      if (config[key] !== undefined && config[key] !== null && typeof config[key] !== 'boolean') throw new Error(`${key} must be true or false`);
+    }
+    for (const key of ['bivalence_heating', 'bivalence_dhw', 'alternative_point']) {
+      const v = config[key];
+      if (v !== undefined && v !== null && typeof v !== 'number' && !(typeof v === 'string' && v.includes('.'))) {
+        throw new Error(`${key} must be a temperature or an entity id`);
+      }
+    }
+    if (config.rooms !== undefined && config.rooms !== null) {
+      const ok = Array.isArray(config.rooms) && config.rooms.length <= HFC_MAX_ROOMS && config.rooms.every((r) => r && typeof r === 'object'
+        && ['entity', 'target', 'humidity', 'name'].every((k) => r[k] === undefined || r[k] === null || typeof r[k] === 'string'));
+      if (!ok) throw new Error(`rooms must be a list of up to ${HFC_MAX_ROOMS} entries with a name, an entity, a target and a humidity`);
+    }
+    if (config.boiler_parallel !== undefined && config.boiler_parallel !== null && typeof config.boiler_parallel !== 'boolean') {
+      throw new Error('boiler_parallel must be true or false');
     }
     if (config.storage !== undefined && config.storage !== null && !HFC_STORAGES.includes(config.storage)) {
       throw new Error(`storage must be one of: ${HFC_STORAGES.join(', ')}`);
@@ -4306,6 +4353,9 @@ class HeatpumpFlowCard extends HTMLElement {
 
   set hass(hass) {
     this._hass = hass;
+    // A standing pipe is its colour faded into the card. On a light background 22 % almost disappears, so it keeps more colour
+    // there; Home Assistant reports the dark mode it uses. A theme can still set --hfc-idle-mix itself.
+    if (hass?.themes && typeof hass.themes.darkMode === 'boolean') this.style.setProperty('--hfc-idle-auto', hass.themes.darkMode ? '22%' : '45%');
     this._renderRoot();
     if (!this._config) return;
     HeatpumpFlowCard._loadPresetRegistry(this, () => {
@@ -4734,6 +4784,15 @@ class HeatpumpFlowCard extends HTMLElement {
   }
 
   // Room keys of circuit n: circuit 1 uses the room and target of the house, circuits 2 to 6 their own.
+  // The configured rooms that have a sensor: an entry the editor has just added, still empty, is left out.
+  _rooms() { return (Array.isArray(this._config?.rooms) ? this._config.rooms : []).filter((r) => r && (r.entity || r.target)); }
+  // A temperature (or humidity) straight from an entity id: a thermostat gives its current temperature, or its target.
+  _entityTemp(id, target = false) {
+    const st = id && this._hass?.states?.[id];
+    if (!st) return NaN;
+    if (['climate', 'water_heater'].includes(id.split('.')[0])) return parseFloat(target ? st.attributes?.temperature : st.attributes?.current_temperature);
+    return parseFloat(st.state);
+  }
   _roomKey(n, key = 'room') { return n === 1 ? key : `hc${n}_${key}`; }
 
   // Dew point per circuit: an explicit sensor wins. Otherwise calculate it from room temperature and relative humidity with the
@@ -4918,7 +4977,9 @@ class HeatpumpFlowCard extends HTMLElement {
       // Circuit 1 exists wherever the heat loop is drawn, without a sensor of its own: it hangs on the buffer (whose temperature
       // it shows as its flow), or on the heat pump's flow and return in a direct system.
       hc: this._has('hc_flow') || this._has('hc_mode') || this._has('hc_pump') || buffer || this._has('flow') || this._has('return'),
-      house: Array.from({ length: this._hcCount }, (_, n) => ['room', 'room_target', 'room_humidity'].some((key) => this._has(this._roomKey(n + 1, key)))).some(Boolean),
+      // Rooms or floors of their own (`rooms`) replace the rows of the circuits in the house.
+      rooms: this._rooms().length,
+      house: this._rooms().length > 0 || Array.from({ length: this._hcCount }, (_, n) => ['room', 'room_target', 'room_humidity'].some((key) => this._has(this._roomKey(n + 1, key)))).some(Boolean),
       circ: ['circulation', 'circulation_start', 'circulation_end', 'circulation_schedule'].some((key) => this._has(key)),
       primaryPump: this._primaryPump(buffer),
       hcPump: this._has('hc_pump'),
@@ -4928,6 +4989,18 @@ class HeatpumpFlowCard extends HTMLElement {
       src: this._sourceType,
       unit: this._unitKey(),
       boiler: ['boiler_state', 'boiler_power', 'boiler_flow'].some((k) => this._has(k)),
+      // A boiler with its own pump beside the heat pump: its flow joins the common flow, its return branches off the common
+      // return. It takes the room below the heat pump block, which a ground or groundwater loop uses, so only air sources.
+      // A hydraulic separator splits the generator loop from the consumers, like a small buffer without sensors. It stands between
+      // the generators and the diverter valve; a parallel boiler then feeds it as well.
+      // A charging pump on the hot-water flow (beside or instead of the diverter valve), drawn with an option or its state entity.
+      dhwPump: dhw && !station && (!!this._config.dhw_pump || this._has('dhw_pump_state')),
+      pumpLabels: !!this._config.pump_labels,
+      // The circulation loop from the top of the hot-water tank to the house and back through the circulation pump.
+      circLine: !!this._config.circulation_line && dhw && !station && (this._config.dhw_type || 'coil') !== 'fresh_water' && ['circulation', 'circulation_start', 'circulation_end', 'circulation_schedule'].some((key) => this._has(key)),
+      separator: !!this._config.hydraulic_separator && !buffer && !this._config.series_buffer,
+      boilerParallel: (!!this._config.boiler_parallel || !!this._config.hydraulic_separator) && this._sourceType === 'air'
+        && ['boiler_state', 'boiler_power', 'boiler_flow'].some((k) => this._has(k)),
       heaters: ['heater', ...HFC_TANK_HEATERS].map((k) => (this._has(k) ? 1 : 0)).join(''),
       middle: [this._has('dhw_middle') ? 1 : 0, this._has('buffer_middle') ? 1 : 0].join(''),
       // The gradient of a combined storage has one stop per sensor present: a sensor that appears later rebuilds it.
@@ -5006,6 +5079,10 @@ class HeatpumpFlowCard extends HTMLElement {
     const showHc = P.hc || this._hcCount > 1;
     const U = this._sourceType === 'air' ? this._unitArt() : null;
     const H = 560 + (showHc ? (this._hcCount - 1) * HFC_CIRCUIT_PITCH : 0);
+    // The boiler in series sits on the flow pipe; a parallel boiler has its own block below the heat pump.
+    const inlineBoiler = P.boiler && !P.boilerParallel && !P.separator;
+    // With a separator the primary side ends at its left wall (x 330), the secondary side starts at its right wall (x 366).
+    const vlStart = P.separator ? 366 : P.boilerParallel ? 318 : 290;
     const equalBuffer = this._config.buffer_values === 'equal';
     const nf = this._narrowFocus();
     const bufferKeys = ['buffer_top', 'buffer_middle', 'buffer_bottom'].filter((key) => this._has(key));
@@ -5045,6 +5122,7 @@ class HeatpumpFlowCard extends HTMLElement {
             <linearGradient id="g-dhw" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" id="g-dhw-top"/>${this._has('dhw_middle') ? '<stop offset="50%" id="g-dhw-middle"/>' : ''}<stop offset="100%" id="g-dhw-bottom"/></linearGradient>
             <linearGradient id="g-buf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" id="g-buf-top"/>${this._has('buffer_middle') ? '<stop offset="50%" id="g-buf-middle"/>' : ''}<stop offset="100%" id="g-buf-bottom"/></linearGradient>
             ${P.combined ? `<linearGradient id="g-cs" x1="0" y1="0" x2="0" y2="1">${this._combinedSensors().map(([k, y]) => `<stop offset="${(((y - 40) / 480) * 100).toFixed(1)}%" id="g-cs-${k}"/>`).join('') || `<stop offset="0%" stop-color="${this._tankColor(NaN)}"/>`}</linearGradient>` : ''}
+            ${P.separator ? '<linearGradient id="g-sep" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" id="g-sep-top"/><stop offset="100%" id="g-sep-bottom"/></linearGradient>' : ''}
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
 
@@ -5058,9 +5136,37 @@ class HeatpumpFlowCard extends HTMLElement {
     // heating flow (vl-buf at y 360), not the flow and the hot-water flow. The return pipes lie under the flow pipes.
     pipePair('rl-dhw', 'M520 215 H512 Q490 215 490 237 V358 Q490 380 468 380 H380', P.dhw && !P.station)}
           ${pipePair('rl-buf', 'M520 495 H400 Q380 495 380 475 V380')}
-          ${pipePair('rl', 'M380 380 H290')}
-          ${pipePair('vl', P.dhw && !P.station ? 'M290 250 H402' : 'M290 250 H400 Q420 250 420 270 V338 Q420 360 442 360 H520')}
+          ${pipePair('rl', P.boilerParallel ? 'M302 380 H290' : P.separator ? 'M330 380 H290' : 'M380 380 H290')}
+          ${
+    // Between the tees and the separator (or the valve) both generators' water passes: the common stretch of flow and return.
+    P.boilerParallel ? `${pipePair('rl-com', `M${P.separator ? 330 : 380} 380 H302`)}${P.separator ? pipePair('vl-com', 'M318 250 H330') : ''}` : ''}
+          ${pipePair('rl-sec', 'M380 380 H366', P.separator)}
+          ${
+    // Parallel boiler: the heat pump's own stretch of flow ends at the tee at x 300, where the boiler's flow rises from its block.
+    // The boiler's return branches off the common return under the valve column and runs below everything to the block.
+    P.separator || P.boilerParallel ? pipePair('vl-hp', `M290 250 H${P.separator && !P.boilerParallel ? 330 : 318}`) : ''}
+          ${
+    // With a separator the boiler's return leaves from its bottom; without one it branches off the common return.
+    P.boilerParallel ? `${pipePair('boiler-rl', 'M302 380 V494 Q302 508 288 508 H280')}${pipePair('boiler-vl', 'M280 534 H304 Q318 534 318 520 V288')}${pipePair('boiler-vl-top', 'M318 280 V250')}
+          ${
+    // The check valve under the tee keeps the heat pump's water out of the standing boiler: above it the pipe holds the common flow.
+    // A check valve on each generator's flow before the tee: the boiler's on its riser, the heat pump's on its own stretch.
+    // Drawn inside the pipe, narrower than its stroke: the flow arrow points the only way the water may pass.
+    `<g class="check-valve" aria-hidden="true"><path class="cv-body" d="M314.5 288 L321.5 288 L318 281 Z"/><path class="cv-seat" d="M314.5 280 H321.5"/></g>
+          <g class="check-valve" aria-hidden="true"><path class="cv-body" d="M300 246.5 L300 253.5 L307 250 Z"/><path class="cv-seat" d="M308 246.5 V253.5"/></g>`}` : ''}
+          ${P.separator ? `<g class="separator" id="separator"><rect class="sep-box" x="330" y="232" width="36" height="166" rx="18" style="fill:url(#g-sep)"/>
+            <text class="sep-title" x="348" y="222" text-anchor="middle" data-fit="90">${this._esc(i.separator)}</text></g>` : ''}
+          ${pipePair('vl', `M${vlStart} 250 ${P.dhw && !P.station ? 'H402' : 'H400 Q420 250 420 270 V338 Q420 360 442 360 H520'}`)}
           ${pipePair('vl-dhw', 'M420 232 V102 Q420 80 442 80 H520', P.dhw && !P.station)}
+          ${P.dhwPump ? `<g class="tap" ${de(e.dhw_pump_state ? 'dhw_pump_state' : 'dhw_top')}><circle class="pump" cx="420" cy="160" r="16"/>
+            <g class="impeller" id="impeller-dhw" style="transform-origin:420px 160px"><path d="M420 148 L426 160 L414 160Z M420 172 L414 160 L426 160Z" class="imp"/></g>
+            ${this._pumpName('dhw_pump_name', 'pump_dhw', 398, 164, 'end', 150)}</g>` : ''}
+          ${
+    // Circulation: hot water leaves the top of the tank for the taps in the house and returns low through the circulation pump.
+    P.circLine ? `${pipePair('circ-vl', 'M640 150 H720')}${pipePair('circ-rl', 'M720 210 H640')}
+          <g class="tap" ${de(this._circulationKey())}><circle class="pump" cx="684" cy="210" r="13"/>
+            <g class="impeller" id="impeller-circ" style="transform-origin:684px 210px"><path d="M684 200 L689 210 L679 210Z M684 220 L679 210 L689 210Z" class="imp"/></g>
+            ${this._pumpName('circulation_pump_name', 'pump_circ', 668, 256, 'start', 150)}</g>` : ''}
           ${pipePair('vl-buf', 'M420 268 V338 Q420 360 442 360 H520', P.dhw && !P.station)}
           ${P.buffer ? '' : P.series ? this._seriesSvg() : `${pipePair('byp-vl', 'M520 360 H640')}${pipePair('byp-rl', 'M640 495 H520')}`}
           ${showHc ? Array.from({ length: this._hcCount }, (_, n) => this._circuitSvg(n + 1)
@@ -5070,12 +5176,15 @@ class HeatpumpFlowCard extends HTMLElement {
           ${this._sourceSvg()}
 
           ${this._primaryPump() ? `<g class="tap" ${de(e.volume ? 'volume' : 'mode')}>
-            <circle class="pump" cx="${P.boiler ? 316 : 340}" cy="250" r="16"/>
-            <g class="impeller" id="impeller-primary" style="transform-origin:${P.boiler ? 316 : 340}px 250px"><path d="M${P.boiler ? 316 : 340} 238 L${P.boiler ? 322 : 346} 250 L${P.boiler ? 310 : 334} 250Z M${P.boiler ? 316 : 340} 262 L${P.boiler ? 310 : 334} 250 L${P.boiler ? 322 : 346} 250Z" class="imp"/></g>
+            <circle class="pump" cx="${inlineBoiler ? 316 : 340}" cy="250" r="16"/>
+            <g class="impeller" id="impeller-primary" style="transform-origin:${inlineBoiler ? 316 : 340}px 250px"><path d="M${inlineBoiler ? 316 : 340} 238 L${inlineBoiler ? 322 : 346} 250 L${inlineBoiler ? 310 : 334} 250Z M${inlineBoiler ? 316 : 340} 262 L${inlineBoiler ? 310 : 334} 250 L${inlineBoiler ? 322 : 346} 250Z" class="imp"/></g>
           </g>` : ''}
-          ${P.boiler ? '' : `<g class="tap" ${de('flow')}><text class="pipe-label${nf ? ' nf-big' : ''}" id="t-vl" x="${this._primaryPump() ? 340 : 338}" y="${this._primaryPump() ? 226 : 236}" text-anchor="middle"></text></g>`}
-          <g class="tap" ${de('volume')}><text class="vol-label" id="t-vol" x="${P.boiler ? 336 : (this._primaryPump() ? 340 : 346)}" y="${P.boiler ? 324 : this._primaryPump() ? 284 : 275}" text-anchor="middle"></text></g>
-          <g class="tap" ${de('return')}><text class="pipe-label" id="t-rl" x="335" y="406" text-anchor="middle"></text></g>
+          ${inlineBoiler || P.separator ? '' : `<g class="tap" ${de('flow')}><text class="pipe-label${nf ? ' nf-big' : ''}" id="t-vl" x="${this._primaryPump() ? 340 : 338}" y="${this._primaryPump() ? 226 : 236}" text-anchor="middle"></text></g>`}
+          <g class="tap" ${de('volume')}>${P.separator ? '<text class="vol-label" id="t-vol" x="390" y="430">'
+    : `<text class="vol-label" id="t-vol" x="${inlineBoiler ? 336 : (this._primaryPump() ? 340 : 346)}" y="${inlineBoiler ? 324 : this._primaryPump() ? 284 : 275}" text-anchor="middle">`}</text></g>
+          ${/* The boiler's flow rises at x 300 through the return label's room: the label drops its RL prefix and moves right. */ ''}
+          <g class="tap" ${de('return')}>${P.separator ? '<text class="pipe-label" id="t-rl" x="390" y="406">'
+    : `<text class="pipe-label${P.boilerParallel ? ' no-pre' : ''}" id="t-rl" x="${P.boilerParallel ? 350 : 335}" y="406" text-anchor="middle">`}</text></g>
 
           <g class="tap" ${de('mode')}>
             <rect class="unit" id="hp-box" x="50" y="190" width="240" height="235" rx="20"/>
@@ -5092,7 +5201,7 @@ class HeatpumpFlowCard extends HTMLElement {
           </g>
           ${this._sourceType === 'air' ? `<g class="tap" ${de(e.source_in ? 'source_in' : 'source_volume')}><text class="small${nf ? ' nf-moved' : ''}" id="t-src-in" x="170" y="450" text-anchor="middle" data-fit="330"></text></g>${this._has('outdoor') ? `<g class="tap" ${de('outdoor')}><text class="small" id="t-outdoor-hp" x="170" y="472" text-anchor="middle"></text></g>` : ''}` : ''}
           ${this._heaterSvg('heater', 'inline')}
-          ${P.boiler ? `<g class="tap boiler" id="boiler" ${de(e.boiler_state ? 'boiler_state' : (e.boiler_power ? 'boiler_power' : 'boiler_flow'))}>
+          ${inlineBoiler ? `<g class="tap boiler" id="boiler" ${de(e.boiler_state ? 'boiler_state' : (e.boiler_power ? 'boiler_power' : 'boiler_flow'))}>
             <text class="boiler-title" x="372" y="207" text-anchor="middle">${this._esc(i.boiler)}</text>
             <rect class="boiler-box" x="348" y="216" width="48" height="68" rx="8"/>
             <path class="boiler-water" d="M348 250 H396"/>
@@ -5101,9 +5210,18 @@ class HeatpumpFlowCard extends HTMLElement {
             <text class="boiler-value" id="t-boiler-power" x="372" y="274" text-anchor="middle"></text>
             <text class="small boiler-flow" id="t-boiler-flow" x="372" y="304" text-anchor="middle"></text>
           </g>` : ''}
+          ${P.boilerParallel ? `<g class="tap boiler parallel" id="boiler" ${de(e.boiler_state ? 'boiler_state' : (e.boiler_power ? 'boiler_power' : 'boiler_flow'))}>
+            <rect class="boiler-box" x="60" y="490" width="220" height="62" rx="12"/>
+            <path class="boiler-flame" transform="translate(-280 289)" d="M372 244 C360 237 365 226 373 222 C371 229 384 232 378 242 C377 244 375 245 372 244Z"/>
+            <text class="boiler-title" x="180" y="514" text-anchor="middle" data-fit="150">${this._esc(i.boiler)}</text>
+            <text class="boiler-value" id="t-boiler-power" x="150" y="538" text-anchor="middle" data-fit="90"></text>
+            <text class="small boiler-flow" id="t-boiler-flow" x="232" y="538" text-anchor="middle" data-fit="80"></text>
+            <text class="boiler-value boiler-biv" id="t-boiler-biv" x="192" y="537" text-anchor="middle" data-fit="174"></text>
+          </g>` : ''}
           ${/* With a boiler the flow label ends in front of the boiler box and grows to the left over the heat pump block; drawn
             after the block, so its halo keeps it readable instead of the block covering it (forum, 13 November). */ ''}
-          ${P.boiler ? `<g class="tap" ${de('flow')}><text class="pipe-label no-pre" id="t-vl" x="344" y="${(this._primaryPump() ? 226 : 236) + 2}" text-anchor="end"></text></g>` : ''}
+          ${inlineBoiler ? `<g class="tap" ${de('flow')}><text class="pipe-label no-pre" id="t-vl" x="344" y="${(this._primaryPump() ? 226 : 236) + 2}" text-anchor="end"></text></g>` : ''}
+          ${P.separator ? `<g class="tap" ${de('flow')}><text class="pipe-label no-pre" id="t-vl" x="326" y="238" text-anchor="end"></text></g>` : ''}
 
           ${P.station ? this._stationSvg() : ''}
           ${P.solar ? this._solarPipes() : ''}
@@ -5846,6 +5964,22 @@ class HeatpumpFlowCard extends HTMLElement {
   _houseSvg() {
     const i = this._i; const e = this._e;
     const de = (key) => (e[key] ? `data-entity="${this._esc(e[key])}"` : '');
+    const rooms = this._rooms();
+    if (rooms.length) {
+      // One row per room or floor, independent of the heating circuits; a tap opens its temperature (or its target).
+      const rows = rooms.map((room, x) => {
+        const name = room.name || `${i.room} ${x + 1}`; const y = 118 + x * 21.5; const id = room.entity || room.target;
+        return `<g class="tap house-row" id="house-rowr${x}" data-entity="${this._esc(id)}" data-name="${this._esc(name)}">
+          <circle class="house-comfort unknown" id="house-comfortr${x}" cx="734" cy="${y - 4}" r="5"/>
+          <text class="house-row-name" x="746" y="${y}">${this._esc(name)}</text>
+          <text class="house-row-value" id="t-house-roomr${x}" x="950" y="${y}" text-anchor="end"></text>
+        </g>`;
+      }).join('');
+      return `<path class="house" d="M720 110 L842.5 25 L965 110 V262 H720 Z"/>
+        <text class="tank-title" x="842.5" y="91" text-anchor="middle">${this._esc(i.house)}</text>
+        ${rows}
+        ${this._sourceType === 'air' ? '' : `<g class="tap" ${de('outdoor')}><text class="small" id="t-outdoor" x="842.5" y="252" text-anchor="middle"></text></g>`}`;
+    }
     if (this._hcCount === 1) {
       const entityKey = ['room', 'room_target', 'room_humidity'].find((key) => e[key]);
       return `<g class="tap" ${de(entityKey)}>
@@ -5934,7 +6068,8 @@ class HeatpumpFlowCard extends HTMLElement {
     })() : ''}
       <g class="tap" ${de(e[k('pump')] ? k('pump') : k('mode'))}>
         ${this._circuitPump(n) ? `<circle class="pump" cx="720" cy="360" r="16"/>
-        <g class="impeller" id="impeller${s}"><path d="M720 348 L726 360 L714 360Z M720 372 L714 360 L726 360Z" class="imp"/></g>` : ''}
+        <g class="impeller" id="impeller${s}"><path d="M720 348 L726 360 L714 360Z M720 372 L714 360 L726 360Z" class="imp"/></g>
+        ${n === 1 ? this._pumpName('hc_pump_name', 'pump_hc', 720, 388, 'middle', 150) : this._pumpName(`hc${n}_pump_name`, 'pump_hc', 720, 388, 'middle', 150)}` : ''}
         <text class="tank-title" id="t-hc-title${s}" x="880" y="302" text-anchor="middle" data-fit="230" data-avoid="t-hc${s}" data-alt="990 end; 990 end fit">${title}</text>
         <text class="small" id="t-hc-mode${s}" x="880" y="524" text-anchor="middle"></text>
       </g>
@@ -6019,6 +6154,17 @@ class HeatpumpFlowCard extends HTMLElement {
 
   // The heat source: the configuration, else the kind a preset reads from the installation (Home Comfort), else air.
   get _sourceType() { return this._config?.source_type || this._presetDefaults().source_type || 'air'; }
+  // Name under a pump: the configured name (a model, a terminal such as MA1), else the generic one while pump_labels is on.
+  _pumpName(key, text, x, y, anchor = 'middle', fit = 100) {
+    const own = this._config[key];
+    if (!own && !this._parts?.pumpLabels) return '';
+    return `<text class="pump-name" x="${x}" y="${y}" text-anchor="${anchor}" data-fit="${fit}">${this._esc(own || this._i[text])}</text>`;
+  }
+  // A temperature from the configuration: a number, or the state of an entity (a setting of the controller).
+  _cfgTemp(key) {
+    const v = this._config[key];
+    return typeof v === 'number' ? v : typeof v === 'string' ? parseFloat(this._hass?.states?.[v]?.state) : NaN;
+  }
   _circuitPump(n) { return !(n === 1 && this._hcCount === 1 && this._primaryPump() && !this._parts.buffer && (!this._e.hc_pump || this._sharedPump())); }
 
   // Drawing of the outdoor unit inside the heat pump block (air source only; brine and water keep the loop symbol).
@@ -6072,6 +6218,23 @@ class HeatpumpFlowCard extends HTMLElement {
         fans: [[...abs(120, 73), 19, 'lam-fan']],
         above: T(`${bars}<path class="lam-cut curve" d="M108 106 C105 84 111 60 120 41"/><path class="lam-cut curve" d="M132 106 C135 84 129 60 120 41"/><path class="lam-cut vein" d="M120 106 V66"/><path class="lam-hi" d="M88 106 H152"/><path class="lam-hi" d="M96 38 V148 M144 38 V148"/><rect class="lam-slot" x="128" y="132" width="3.5" height="13" rx="1.7"/><rect class="lam-rim" x="88" y="36" width="64" height="114" rx="3"/>`),
         snows: [[...abs(120, 73), 17]],
+      };
+    }
+    if (key === 'vaillant_pro') {
+      // aroTHERM pro (monoblock, R290), after the product photos: one matte anthracite box, about 1.5 times as wide as tall. About
+      // 60 % of the front carries dense horizontal louvres with the round fan guard of fine rings and a light hub ring in front of
+      // them; the rest is a flat panel with the small white logo at the top, set off by a seam only. Two small black feet.
+      const x = 52; const y = 54; const w = 128; const h = 84; const pw = 77; const cx = x + 39; const cy = y + h / 2; const r = 35;
+      const slats = Array.from({ length: 19 }, (_, n) => `<path class="vpro-slat" d="M${x + 3} ${y + 5 + n * 4.1} H${x + pw - 1}"/>`).join('');
+      const rings = Array.from({ length: 10 }, (_, n) => `<circle class="vpro-ring" cx="${cx}" cy="${cy}" r="${(r * (1 - n * 0.07)).toFixed(1)}"/>`).join('');
+      const foot = (fx) => `<path class="vpro-foot" d="M${fx} ${y + h} H${fx + 14} L${fx + 17} ${y + h + 5} H${fx - 2} Z"/>`;
+      return {
+        below: T(`${foot(x + 10)}${foot(x + w - 25)}<rect class="vpro-body" x="${x}" y="${y}" width="${w}" height="${h}" rx="4"/>${slats}<circle class="vpro-hole" cx="${cx}" cy="${cy}" r="${r}"/>`),
+        fans: [[...abs(cx, cy), +(r * 0.8).toFixed(1), 'vpro-fan']],
+        above: T(`${rings}<circle class="vpro-hub" cx="${cx}" cy="${cy}" r="${(r * 0.3).toFixed(1)}"/>`
+          + `<path class="vpro-seam" d="M${x + pw + 1} ${y + 2} V${y + h - 2}"/><path class="vpro-top" d="M${x + 4} ${y + 0.8} H${x + w - 4}"/>`
+          + `<path class="vpro-logo" d="M${x + w - 20} ${y + 9} h12"/><circle class="vpro-logo-dot" cx="${x + w - 23}" cy="${y + 9}" r="1.6"/><rect class="vpro-rim" x="${x}" y="${y}" width="${w}" height="${h}" rx="4"/>`),
+        snows: [[...abs(cx, cy), 17]],
       };
     }
     if (key.startsWith('vaillant')) {
@@ -7624,7 +7787,8 @@ class HeatpumpFlowCard extends HTMLElement {
     // through the heat pump as well, unless the diverter valve stands on hot water and closes the heating side (also after a
     // charge, while the compressor is off). When the heat pump or its primary pump moves the water and no circuit pump runs, it
     // passes the circuits with their pumps standing still.
-    const shared = !P.buffer;
+    // A hydraulic separator decouples the consumers from the generators, as a parallel buffer does.
+    const shared = !P.buffer && !P.separator;
     const heatClosed = flowDhw || (!!P.dhw && valveDhw);
     const pumped = shared && !heatClosed && !bypass && demand.some((c) => c.own === true);
     const heatLoop = flowHeat || pumped;
@@ -7635,7 +7799,19 @@ class HeatpumpFlowCard extends HTMLElement {
       vl: flowLoop || pumped, rl: flowLoop || pumped, 'vl-dhw': flowDhw, 'rl-dhw': flowDhw,
       'vl-buf': heatLoop, 'rl-buf': heatLoop, 'byp-vl': heatLoop, 'byp-rl': heatLoop,
     };
-    if (P.boiler) pipes.boiler = flowLoop || pumped;
+    // A parallel boiler moves its water through its own pipes only; the heat pump's stretch stands while the boiler runs alone.
+    if (P.separator) {
+      // Primary side: each generator moves its own water into the separator while it runs. Secondary side: as behind a buffer.
+      const hpPrimary = running || circ;
+      Object.assign(pipes, { 'vl-hp': hpPrimary, rl: hpPrimary, 'rl-sec': heatLoop || flowDhw });
+      if (P.boilerParallel) {
+        Object.assign(pipes, { 'boiler-vl': boilerRunning, 'boiler-vl-top': boilerRunning, 'boiler-rl': boilerRunning,
+          'vl-com': hpPrimary || boilerRunning, 'rl-com': hpPrimary || boilerRunning });
+      }
+    } else if (P.boilerParallel) {
+      const hpLoop = (flowLoop || pumped) && generatorMode !== 'boiler_only';
+      Object.assign(pipes, { 'vl-hp': hpLoop, rl: hpLoop, 'rl-com': flowLoop || pumped, 'boiler-vl': (flowLoop || pumped) && boilerRunning, 'boiler-vl-top': (flowLoop || pumped) && boilerRunning, 'boiler-rl': (flowLoop || pumped) && boilerRunning });
+    } else if (P.boiler) pipes.boiler = flowLoop || pumped;
     if (P.series) Object.assign(pipes, { 'sb-vl': heatLoop && !bypass, 'sb-a': heatLoop && bypass, 'sb-b': heatLoop && !bypass });
     // A fresh-water station on the buffer has no diverter valve: hot-water operation heats the buffer along the heating path.
     // Its own pipes do not animate, because the card does not know when water is drawn.
@@ -7667,6 +7843,10 @@ class HeatpumpFlowCard extends HTMLElement {
       passiveFlow: pumpKnown && !primaryRuns && vol > 0,
       // The DHW coil heats while the valve charges the tank.
       coil: toDhw,
+      // The charging pump follows its own state, else the hot-water loop.
+      circulation: !!P.circLine && this._on('circulation'),
+      dhwPump: !!P.dhwPump && (this._has('dhw_pump_state') && !['unavailable', 'unknown'].includes(String(this._s('dhw_pump_state')).toLowerCase())
+        ? this._pumpOn('dhw_pump_state') : flowDhw),
       solar, circuits, pipes,
     };
   }
@@ -7725,7 +7905,7 @@ class HeatpumpFlowCard extends HTMLElement {
     // so it keeps the heat pump's speed. Risers and the trunk carry the circuits below them: the sum of their flow rates.
     const byFlow = (v) => Math.min(Math.max(1000 / v, 0.4), 30);
     const hcVol = (n) => { const v = this._lh(this._hk(n, 'volume')); return Number.isFinite(v) && v > 0 ? v : NaN; };
-    const ownLoop = !!this._parts.buffer;
+    const ownLoop = !!this._parts.buffer || !!this._parts.separator;
     const groupDur = (list) => {
       const flowing = list.filter((c) => c.on);
       const vols = flowing.map((c) => hcVol(c.n));
@@ -7758,11 +7938,41 @@ class HeatpumpFlowCard extends HTMLElement {
     const cRet = this._rlColor(tRet);
     const stroke = (id, c) => { const el = this._$(`p-${id}`); if (el) el.style.setProperty('--pc', c); };
     ['vl', 'vl-dhw', 'vl-buf', 'byp-vl'].forEach((id) => stroke(id, cFlow));
-    ['rl', 'rl-dhw', 'rl-buf', 'byp-rl'].forEach((id) => stroke(id, cRet));
+    ['rl', 'rl-dhw', 'rl-buf', 'byp-rl', 'boiler-rl'].forEach((id) => stroke(id, cRet));
+    // Parallel boiler: each generator's own flow pipe shows its own flow temperature, the common pipe the mixed one.
+    if (P.separator) {
+      stroke('rl-sec', cRet);
+      // The separator is warm at the top and cool at the bottom while water moves through it.
+      const sepOn = Object.entries(F.pipes).some(([id, on]) => on && ['vl-hp', 'boiler-vl', 'vl', 'rl-sec'].includes(id));
+      // Standing, it fades like an idle pipe.
+      const idle = 'color-mix(in srgb, var(--hfc-muted) var(--hfc-idle-mix, var(--hfc-idle-auto, 22%)), var(--card-background-color, #fff))';
+      this._$('g-sep-top')?.setAttribute('stop-color', sepOn ? this._vlColor(tCommonFlow) : idle);
+      this._$('g-sep-bottom')?.setAttribute('stop-color', sepOn ? cRet : idle);
+    }
+    if (P.separator || P.boilerParallel) {
+      stroke('vl-hp', defrost || cooling ? hfcVar('defrost') : this._vlColor(tFlow));
+      stroke('vl-com', cFlow); stroke('rl-com', cRet);
+      stroke('boiler-vl', this._vlColor(Number.isFinite(tBoiler) ? tBoiler : tCommonFlow));
+      // A standing boiler's pipes still hold water: the return shows the common return all the time, the flow above the check
+      // valve the common flow while the heat pump moves it. Only the dashes say that water moves.
+      stroke('boiler-vl-top', boilerRunning ? this._vlColor(Number.isFinite(tBoiler) ? tBoiler : tCommonFlow) : cFlow);
+    }
     const pipe = (id, on) => { this._cls(`p-${id}`, on); this._cls(`f-${id}`, on); };
     Object.entries(F.pipes).forEach(([id, on]) => pipe(id, on));
+    if (P.boilerParallel) {
+      // Coloured but still: the pipe holds water while the dashes stay off (see the strokes above).
+      this._cls('p-boiler-rl', true);
+      this._cls('p-boiler-vl-top', !!F.pipes['boiler-vl-top'] || !!F.pipes['vl-hp'] || !!F.pipes.vl);
+    }
     // The primary pump's speed follows the flow rate, so a sniffing pump with a few l/h turns slowly.
     this._cls('impeller-primary', F.primaryPump);
+    if (P.dhwPump) this._cls('impeller-dhw', F.dhwPump);
+    if (P.circLine) {
+      // Tap water: hot from the top of the tank, a little cooler on its way back.
+      const tTap = this._n('dhw_top');
+      stroke('circ-vl', this._vlColor(tTap)); stroke('circ-rl', this._rlColor(Number.isFinite(tTap) ? tTap - 5 : tTap));
+      pipe('circ-vl', F.circulation); pipe('circ-rl', F.circulation); this._cls('impeller-circ', F.circulation);
+    }
     if (P.series) {
       stroke('sb-vl', cFlow); stroke('sb-a', cFlow); stroke('sb-b', cRet);
       this._$('sb-arrow')?.setAttribute('d', bypass ? 'M600 481 V495 H586 M593 488 L586 495 L593 502' : 'M614 495 H586 M593 488 L586 495 L593 502');
@@ -7882,8 +8092,14 @@ class HeatpumpFlowCard extends HTMLElement {
       const boilerPower = this._w('boiler_power');
       this._txt('t-boiler-power', boilerRunning
         ? (Number.isFinite(boilerPower) && boilerPower > 0 ? `${this._fmt(boilerPower >= 1000 ? boilerPower / 1000 : boilerPower, boilerPower >= 1000 ? 1 : 0)} ${boilerPower >= 1000 ? 'kW' : 'W'}` : i.running)
-        : i.boiler_off);
-      this._txt('t-boiler-flow', this._has('boiler_flow') ? this._t(tBoiler) : '');
+        : (P.boilerParallel ? '' : i.boiler_off));
+      this._txt('t-boiler-flow', this._has('boiler_flow') && (boilerRunning || !P.boilerParallel) ? this._t(tBoiler) : '');
+      if (P.boilerParallel) {
+        // A standing boiler shows below which outdoor temperatures it is set to help (bivalence points), else that it is off.
+        const parts = [['bivalence_heating', i.modes.heating], ['bivalence_dhw', i.dhw]]
+          .map(([key, label]) => [this._cfgTemp(key), label]).filter(([v]) => Number.isFinite(v)).map(([v, label]) => `${label} < ${this._fmt(v, 0)} °C`);
+        this._txt('t-boiler-biv', boilerRunning ? '' : (parts.join(' · ') || i.boiler_off));
+      }
       const boiler = this._$('boiler');
       if (boiler) {
         const state = { hp_only: `${i.heat_pump}: ${i.running}; ${i.boiler_off}`, boiler_only: `${i.heat_pump}: ${i.compressor_off}; ${i.boiler}: ${i.running}`, both: `${i.heat_pump}: ${i.running}; ${i.boiler}: ${i.running}`, idle: `${i.compressor_off}; ${i.boiler_off}` }[generatorMode];
@@ -8004,7 +8220,21 @@ class HeatpumpFlowCard extends HTMLElement {
     }
 
     // house
-    if (P.house) {
+    if (P.house && P.rooms) {
+      this._rooms().forEach((room, x) => {
+        const r = this._entityTemp(room.entity); const rt = this._entityTemp(room.target, true); const hum = this._entityTemp(room.humidity);
+        const value = (v) => (Number.isFinite(v) ? this._fmt(v) : '–');
+        const temperatures = room.entity && room.target ? `${value(r)} / ${value(rt)} °C` : room.entity ? `${value(r)} °C` : `${i.target} ${value(rt)} °C`;
+        this._txtTail(`t-house-roomr${x}`, temperatures, Number.isFinite(hum) ? ` · ${this._fmt(hum, 0)} %` : '');
+        const state = Number.isFinite(r) && Number.isFinite(rt) ? (r < rt - 0.5 ? 'below' : r > rt + 0.5 ? 'above' : 'on') : 'unknown';
+        this._$(`house-comfortr${x}`)?.setAttribute('class', `house-comfort ${state}`);
+        const row = this._$(`house-rowr${x}`);
+        if (row) {
+          const parts = [room.entity ? `${i.room} ${value(r)} °C` : '', room.target ? `${i.target} ${value(rt)} °C` : '', Number.isFinite(hum) ? `${i.humidity} ${this._fmt(hum, 0)} %` : ''];
+          row.dataset.a11y = `${row.dataset.name}: ${parts.filter(Boolean).join(', ')}${state === 'unknown' ? '' : `, ${i[`comfort_${state}`]}`}`;
+        }
+      });
+    } else if (P.house) {
       if (this._hcCount === 1) {
         const rt = this._n('room_target'); const r = this._n('room');
         const tgt = Number.isFinite(rt) ? `${i.target} ${this._fmt(rt)} °C` : '';
@@ -8033,7 +8263,10 @@ class HeatpumpFlowCard extends HTMLElement {
       }
     }
     const outTxt = this._has('outdoor') ? `${i.outdoor} ${this._t(this._n('outdoor'))}` : '';
-    this._txt('t-outdoor', outTxt); this._txt('t-outdoor-hp', outTxt);
+    // Alternative point: below this outdoor temperature the heat pump stops and the second heat generator works alone.
+    const alt = this._cfgTemp('alternative_point');
+    this._txt('t-outdoor', outTxt);
+    this._txt('t-outdoor-hp', [outTxt, Number.isFinite(alt) ? i.hp_off_below.replace('{t}', `${this._fmt(alt, 0)} °C`) : ''].filter(Boolean).join(' · '));
 
     // power sources
     if (P.power) {
@@ -8232,7 +8465,7 @@ HeatpumpFlowCard.styles = `
   .vapour.on .vapour-puff { animation: hfc-vapour var(--hfc-vapour, 2.2s) ease-out infinite; transform-box: fill-box; transform-origin: center bottom; }
   .vapour.on .vapour-puff:nth-child(2) { animation-delay: .45s; } .vapour.on .vapour-puff:nth-child(3) { animation-delay: .9s; }
   /* idle pipes are a solid pale tint, not transparent, so round caps that overlap at a junction do not show as dots */
-  .pipe { fill: none; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; stroke: color-mix(in srgb, var(--pc, var(--hfc-muted)) 22%, var(--card-background-color, #fff)); transition: stroke .5s; }
+  .pipe { fill: none; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; stroke: color-mix(in srgb, var(--pc, var(--hfc-muted)) var(--hfc-idle-mix, var(--hfc-idle-auto, 22%)), var(--card-background-color, #fff)); transition: stroke .5s; }
   .pipe.on { stroke: var(--pc, var(--hfc-muted)); }
   .flow { fill: none; stroke: ${hfcVar('flow-dash')}; stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 3 17; opacity: 0; pointer-events: none; }
   .flow.on { opacity: 1; animation: hfc-dash 1s linear infinite; }
@@ -8300,6 +8533,15 @@ HeatpumpFlowCard.styles = `
   .boiler-flame { fill: var(--disabled-text-color, #9e9e9e); transition: fill .4s; }
   .boiler-value { font-size: 10px; fill: var(--secondary-text-color, #727272); }
   .boiler-flow { font-size: 11px; }
+  .boiler.parallel .boiler-title { font-size: 15px; }
+  .boiler.parallel .boiler-value, .boiler.parallel .boiler-flow { font-size: 13px; }
+  .boiler.parallel .boiler-box { stroke-width: 2.5; }
+  .sep-box { stroke: var(--divider-color, rgba(127,127,127,.5)); stroke-width: 2; }
+  .boiler.parallel .boiler-biv { font-size: 11px; }
+  .check-valve .cv-body { fill: var(--hfc-check-valve, #1e293b); }
+  .check-valve .cv-seat { stroke: var(--hfc-check-valve, #1e293b); stroke-width: 2; }
+  .pump-name { font-size: 10px; fill: var(--secondary-text-color, #727272); paint-order: stroke; stroke: var(--card-background-color, #fff); stroke-width: 3px; stroke-linejoin: round; }
+  .sep-title { font-size: 12px; font-weight: 600; fill: var(--secondary-text-color, #727272); }
   .boiler.on .boiler-box { stroke: ${hfcVar('heat')}; }
   .boiler.on .boiler-water { stroke: ${hfcVar('heat')}; }
   .boiler.on .boiler-flame { fill: ${hfcVar('hot')}; filter: url(#glow); }
@@ -8353,9 +8595,9 @@ HeatpumpFlowCard.styles = `
   .lam-plinth { fill: color-mix(in srgb, var(--primary-text-color, #1f2937) 22%, var(--card-background-color, #fff)); }
   /* a rim in the theme text colour keeps the anthracite body visible on dark cards */
   .lam-rim { fill: none; stroke: color-mix(in srgb, var(--primary-text-color, #1f2937) 48%, transparent); stroke-width: 1.4; }
-  .fan.lam-fan .blade, .fan.vai-fan .blade, .fan.pana-fan .blade, .fan.vies-fan .blade, .fan.bosch-fan .blade, .fan.sd-fan .blade, .fan.sam-fan .blade, .fan.wolf-fan .blade, .fan.kro-fan .blade, .fan.ait-fan .blade, .fan.stb-fan .blade, .fan.bud-fan .blade, .fan.budt-fan .blade, .fan.budi-fan .blade { fill: #9aa3ad; opacity: .55; }
-  .fan.lam-fan .hub, .fan.vai-fan .hub, .fan.pana-fan .hub, .fan.vies-fan .hub, .fan.bosch-fan .hub, .fan.sd-fan .hub, .fan.sam-fan .hub, .fan.wolf-fan .hub, .fan.kro-fan .hub, .fan.ait-fan .hub, .fan.stb-fan .hub, .fan.bud-fan .hub, .fan.budt-fan .hub, .fan.budi-fan .hub { fill: #9aa3ad; }
-  .fan.lam-fan.on .blade, .fan.vai-fan.on .blade, .fan.pana-fan.on .blade, .fan.vies-fan.on .blade, .fan.bosch-fan.on .blade, .fan.sd-fan.on .blade, .fan.sam-fan.on .blade, .fan.wolf-fan.on .blade, .fan.kro-fan.on .blade, .fan.ait-fan.on .blade, .fan.stb-fan.on .blade, .fan.bud-fan.on .blade, .fan.budt-fan.on .blade, .fan.budi-fan.on .blade { fill: ${hfcVar('cool')}; opacity: .95; }
+  .fan.lam-fan .blade, .fan.vai-fan .blade, .fan.pana-fan .blade, .fan.vies-fan .blade, .fan.bosch-fan .blade, .fan.sd-fan .blade, .fan.sam-fan .blade, .fan.wolf-fan .blade, .fan.kro-fan .blade, .fan.ait-fan .blade, .fan.stb-fan .blade, .fan.bud-fan .blade, .fan.budt-fan .blade, .fan.budi-fan .blade, .fan.vpro-fan .blade { fill: #9aa3ad; opacity: .55; }
+  .fan.lam-fan .hub, .fan.vai-fan .hub, .fan.pana-fan .hub, .fan.vies-fan .hub, .fan.bosch-fan .hub, .fan.sd-fan .hub, .fan.sam-fan .hub, .fan.wolf-fan .hub, .fan.kro-fan .hub, .fan.ait-fan .hub, .fan.stb-fan .hub, .fan.bud-fan .hub, .fan.budt-fan .hub, .fan.budi-fan .hub, .fan.vpro-fan .hub { fill: #9aa3ad; }
+  .fan.lam-fan.on .blade, .fan.vai-fan.on .blade, .fan.pana-fan.on .blade, .fan.vies-fan.on .blade, .fan.bosch-fan.on .blade, .fan.sd-fan.on .blade, .fan.sam-fan.on .blade, .fan.wolf-fan.on .blade, .fan.kro-fan.on .blade, .fan.ait-fan.on .blade, .fan.stb-fan.on .blade, .fan.bud-fan.on .blade, .fan.budt-fan.on .blade, .fan.budi-fan.on .blade, .fan.vpro-fan.on .blade { fill: ${hfcVar('cool')}; opacity: .95; }
   .vai-body { fill: ${hfcVar('casing')}; stroke: color-mix(in srgb, ${hfcVar('casing')} 80%, #6b7280); stroke-width: 1.5; }
   .vai-dark, .vai-foot { fill: color-mix(in srgb, ${hfcVar('anthracite')} 60%, #000); }
   .vai-gr { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 45%, #a0a8b0); stroke-width: 2; } .vai-gr.thin { stroke-width: 1; opacity: .85; }
@@ -8435,6 +8677,17 @@ HeatpumpFlowCard.styles = `
   .fan.on .spin-ring { stroke: ${hfcVar('cool')}; opacity: .95; }
   .sd-accent { fill: none; stroke: ${hfcVar('hot')}; stroke-width: 2.5; }
   .sd-vents { stroke-linecap: round; } .sd-badge { fill: ${hfcVar('hot')}; }
+  .vpro-body { fill: color-mix(in srgb, ${hfcVar('anthracite')} 70%, #111827); }
+  .vpro-slat { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 55%, #000); stroke-width: 1.6; }
+  .vpro-hole { fill: color-mix(in srgb, ${hfcVar('anthracite')} 35%, #000); }
+  .vpro-ring { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 82%, #6b7280); stroke-width: 1.1; }
+  .vpro-hub { fill: color-mix(in srgb, ${hfcVar('anthracite')} 35%, #000); stroke: color-mix(in srgb, ${hfcVar('anthracite')} 50%, #9ca3af); stroke-width: 2; }
+  .vpro-seam { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 45%, #000); stroke-width: 1.2; }
+  .vpro-top { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 60%, #9ca3af); stroke-width: 1; opacity: .7; }
+  .vpro-logo { fill: none; stroke: #f8fafc; stroke-width: 2; stroke-linecap: round; opacity: .9; }
+  .vpro-logo-dot { fill: #f8fafc; opacity: .9; }
+  .vpro-rim { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 45%, #000); stroke-width: 1.2; }
+  .vpro-foot { fill: #0b0f14; }
   .sam-body { fill: color-mix(in srgb, ${hfcVar('anthracite')} 88%, #111827); stroke: color-mix(in srgb, ${hfcVar('anthracite')} 62%, #000); stroke-width: 1.5; }
   .sam-grille { fill: color-mix(in srgb, ${hfcVar('anthracite')} 32%, #000); }
   .sam-slat { fill: none; stroke: color-mix(in srgb, ${hfcVar('anthracite')} 48%, #000); stroke-width: 3; stroke-linecap: round; }
@@ -8715,7 +8968,7 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     else if (choice === 'no') config[q.key] = false;
     else delete config[q.key];
     // A parallel buffer and a series buffer exclude each other, as with the switches below.
-    if (q.key === 'buffer' && config.buffer === true) { delete config.series_buffer; delete config.series_bypass; }
+    if (q.key === 'buffer' && config.buffer === true) { delete config.series_buffer; delete config.series_bypass; delete config.hydraulic_separator; }
     // The pump question only applies without a buffer: a buffer after all takes back its answer from this session.
     if (q.key === 'buffer' && config.buffer !== false && this._layoutShown?.has('primary_pump')) { delete config.primary_pump; this._layoutShown.delete('primary_pump'); }
     this._config = config;
@@ -8936,6 +9189,8 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     // editor hides its field and the card would reject the combination.
     if (!value.storage || value.storage === 'separate') delete config.storage;
     if (config.storage === 'combined') { delete config.buffer; delete config.series_buffer; delete config.series_bypass; }
+    // A buffer replaces the separator: both are the hydraulic separation, and the card rejects the two together.
+    if (config.storage === 'combined' || config.buffer || config.series_buffer) delete config.hydraulic_separator;
     // The two switches select different hydraulic strategies. When one is newly enabled, clear the other instead of emitting an
     // invalid configuration; hand-written YAML with both stays rejected by setConfig.
     const bufferChanged = !!value.buffer !== !!this._config.buffer;
