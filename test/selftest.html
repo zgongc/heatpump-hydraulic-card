@@ -7089,13 +7089,13 @@
     // Bivalence points in the standing boiler, the alternative point under the heat pump; numbers or entities.
     const bv = mount({ ...base, boiler_parallel: true, bivalence_heating: -5, bivalence_dhw: 'number.biv_dhw', alternative_point: -15 },
       hassOf(state(true, false, { 'number.biv_dhw': ['0', '°C'] }))); await wait(10);
-    check(/< -5 °C/.test(text(bv, 't-boiler-biv')) && /< 0 °C/.test(text(bv, 't-boiler-biv')), `bivalence points while the boiler stands (${text(bv, 't-boiler-biv')})`);
+    check(/< -5 °C$/.test(text(bv, 't-boiler-biv')) && /< 0 °C$/.test(text(bv, 't-boiler-biv2')), `bivalence points while the boiler stands, one line each (${text(bv, 't-boiler-biv')} | ${text(bv, 't-boiler-biv2')})`);
     check(/off < -15 °C/.test(text(bv, 't-outdoor-hp')), `alternative point beside the outdoor temperature (${text(bv, 't-outdoor-hp')})`);
     bv.hass = hassOf(state(false, true, { 'number.biv_dhw': ['0', '°C'] })); await wait(10);
-    check(text(bv, 't-boiler-biv') === '', 'a running boiler shows its values instead of the bivalence points');
+    check(text(bv, 't-boiler-biv') === '' && text(bv, 't-boiler-biv2') === '', 'a running boiler shows its values instead of the bivalence points');
     bv.remove();
     const plain = mount({ ...base, boiler_parallel: true }, hassOf(state(true, false))); await wait(10);
-    check(text(plain, 't-boiler-biv') === plain._i.boiler_off && !/off </.test(text(plain, 't-outdoor-hp')), 'without the points: "boiler off" and the plain outdoor temperature');
+    check(text(plain, 't-boiler-biv') === plain._i.boiler_off && text(plain, 't-boiler-biv2') === '' && !/off </.test(text(plain, 't-outdoor-hp')), 'without the points: "boiler off" and the plain outdoor temperature');
     plain.remove();
     check(throws({ bivalence_heating: 'cold' }) && throws({ alternative_point: true }), 'a switch point is a temperature or an entity id');
 

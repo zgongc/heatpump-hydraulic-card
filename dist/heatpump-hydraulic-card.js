@@ -5362,6 +5362,7 @@ class HeatpumpFlowCard extends HTMLElement {
             <text class="boiler-value" id="t-boiler-power" x="150" y="538" text-anchor="middle" data-fit="90"></text>
             <text class="small boiler-flow" id="t-boiler-flow" x="232" y="538" text-anchor="middle" data-fit="80"></text>
             <text class="boiler-value boiler-biv" id="t-boiler-biv" x="192" y="537" text-anchor="middle" data-fit="174"></text>
+            <text class="boiler-value boiler-biv" id="t-boiler-biv2" x="192" y="545" text-anchor="middle" data-fit="174"></text>
           </g>` : ''}
           ${/* With a boiler the flow label ends in front of the boiler box and grows to the left over the heat pump block; drawn
             after the block, so its halo keeps it readable instead of the block covering it (forum, 13 November). */ ''}
@@ -8240,10 +8241,14 @@ class HeatpumpFlowCard extends HTMLElement {
         : (P.boilerParallel ? '' : i.boiler_off));
       this._txt('t-boiler-flow', this._has('boiler_flow') && (boilerRunning || !P.boilerParallel) ? this._t(tBoiler) : '');
       if (P.boilerParallel) {
-        // A standing boiler shows below which outdoor temperatures it is set to help (bivalence points), else that it is off.
+        // A standing boiler shows below which outdoor temperatures it is set to help (bivalence points), one line each, else
+        // that it is off. Two points take two lines: in one line they do not fit the box in every browser and language.
         const parts = [['bivalence_heating', i.modes.heating], ['bivalence_dhw', i.dhw]]
           .map(([key, label]) => [this._cfgTemp(key), label]).filter(([v]) => Number.isFinite(v)).map(([v, label]) => `${label} < ${this._fmt(v, 0)} °C`);
-        this._txt('t-boiler-biv', boilerRunning ? '' : (parts.join(' · ') || i.boiler_off));
+        const lines = boilerRunning ? [] : (parts.length ? parts : [i.boiler_off]);
+        this._txt('t-boiler-biv', lines[0] || '');
+        this._txt('t-boiler-biv2', lines[1] || '');
+        this._$('t-boiler-biv')?.setAttribute('y', lines.length > 1 ? '531' : '537');
       }
       const boiler = this._$('boiler');
       if (boiler) {
