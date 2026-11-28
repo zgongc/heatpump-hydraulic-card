@@ -2284,10 +2284,14 @@ const HFC_I18N = {
     title: 'Isı pompası', heat_pump: 'Isı pompası', boiler: 'Kombi', boiler_off: 'Kombi kapalı', dhw: 'Sıcak su', buffer: 'Tampon tank', series_tank: 'Seri tampon', combined_tank: 'Kombine depo', heating_zone: 'Isıtma', fresh_water_station: 'Taze su istasyonu', heating_circuit: 'Isıtma devresi',
     house: 'Odalar', room: 'Oda', room_target: 'Oda hedefi', humidity: 'Nem', dew_point: 'Çiy noktası', dew_margin: 'Çiy noktası payı', dew_warning: 'yoğuşma riski', flow_short: 'Gidiş', comfort_below: 'hedefin altında', comfort_on: 'hedefte', comfort_above: 'hedefin üstünde', running: 'çalışıyor', compressor_off: 'Kompresör kapalı', source_in: 'Hava girişi', outdoor: 'Dış',
     energy_missing: 'Enerji panosu: {sources} için güç sensörü yok; yalnız enerji sayaçları anlık akışı gösteremez.',
-    brine_in: 'Salamura giriş', brine_out: 'Salamura çıkış', well_in: 'Kuyu giriş', well_out: 'Kuyu çıkış',
+    brine_in: 'Salamura giriş', brine_out: 'Salamura çıkış', well_in: 'Kuyu giriş', well_out: 'Kuyu çıkış', exhaust_in: 'Egzoz havası', exhaust_out: 'Atık hava',
     details: 'Ayrıntılar', sec_operation: 'Çalışma', sec_hydraulic: 'Hidrolik basınçlar', sec_refrigerant: 'Soğutucu devresi', sec_cutouts: 'Emniyet kesmeleri (olay sayısı)', sec_more: 'Diğer',
     diagnostic_copy: 'Tanı raporunu kopyala', diagnostic_copied: 'Tanı raporu kopyalandı', diagnostic_failed: 'Tanı raporu kopyalanamadı',
     fullscreen_open: 'Tam ekran aç', fullscreen_close: 'Tam ekranı kapat',
+    rolling: { '7d': '7 gün', '30d': '30 gün' },
+    trend_up: 'önceki {n} güne göre %{p} fazla', trend_down: 'önceki {n} güne göre %{p} az', trend_steady: 'önceki {n} günle aşağı yukarı aynı',
+    weather_up: 'bu dış sıcaklıkta olağandan %{p} yüksek', weather_down: 'bu dış sıcaklıkta olağandan %{p} düşük', weather_steady: 'bu dış sıcaklık için olağan',
+    weather_unsure: 'belirsiz: dış sıcaklıklar önceki haftalardan farklı',
     det: {
       hours: 'Kompresör saati', starts_total: 'Toplam kompresör çalışması', aux_hours: 'Isıtıcı saati', aux_starts: 'Toplam ısıtıcı çalışması', energy_total: 'Toplam elektrik',
       cutout_high_pressure: 'Yüksek basınç kesmesi', cutout_low_pressure: 'Alçak basınç kesmesi', cutout_temperature: 'Sıcaklık kesmesi',
@@ -2296,7 +2300,7 @@ const HFC_I18N = {
       eev: 'Genleşme valfi', superheat: 'Kızgınlık', subcooling: 'Aşırı soğutma',
     },
     source_flow: 'Kaynak', target: 'Hedef', curve_offset: 'eğri', curve_shift: 'kaydırma', mixer: 'Karışım vanası', mixer_opening: 'açılıyor', mixer_closing: 'kapanıyor', return_short: 'Dön', error: 'Hata', circulation: 'Sirk.', circulation_from: 'başlangıç', circulation_until: 'bitiş', valve_dhw: 'Sıcak su', solar: 'Güneş',
-    brine_pressure: 'Salamura basıncı', hc_pressure: 'Isıtma basıncı', pressure_normal: 'normal', pressure_warning: 'uyarı', pressure_critical: 'kritik',
+    brine_pressure: 'Salamura basıncı', hc_pressure: 'Isıtma basıncı', system_pressure: 'Sistem basıncı', pressure_normal: 'normal', pressure_warning: 'uyarı', pressure_critical: 'kritik',
     timeline_title: 'Son {h} saat', timeline_gap: 'Veri yok', timeline_aria: 'Son {h} saatin çalışma modu. Ok tuşlarıyla bir dönem seçilir.',
     run_series: '{t} beri {n}. çalışma', run_pause: 'öncesinde {d} duruş', run_partial: 'zaman çizelgesinden önce başladı', run_ongoing: 'hâlâ çalışıyor', run_phase: 'çalışma dönemi, kompresör verisi yok', run_close: 'Kapat', run_electricity: 'Elektrik', run_heat: 'Isı', sec_units: 'Üniteler', unit: 'Ünite', units_running: '{n} / {m} ünite', unit_off: 'kapalı', unit_stale: 'ısı güncel değil', run_flow: 'Gidiş', run_reached: 'ulaşıldı', run_missed: '{d} K altında', run_heater: 'Isıtıcı çubuk', run_on: 'açık', run_off: 'kapalı',
     programs: { eco: 'Eko', night: 'Gece', party: 'Parti', holiday: 'Tatil' },
@@ -2305,17 +2309,18 @@ const HFC_I18N = {
     stat_cop_heating: 'Bugünkü ısıtma COP', stat_cop_dhw: 'Bugünkü sıcak su COP', stat_energy: 'Bugünkü enerji',
     stat_starts: 'Bugünkü çalışmalar', stat_spread: 'Sıcaklık farkı', stat_volume: 'Debi', stat_heat: 'Isı gücü', pv_share: 'Güneş',
     tiles: {
-      cop_live: 'Anlık COP', cop_heating: 'Isıtma COP', cop_dhw: 'Sıcak su COP', cop_cooling: 'Soğutma EER', cop_total: 'Toplam COP', spf: 'SPF (yıl)',
+      cop_live: 'Anlık COP', cop_heating: 'Isıtma COP', cop_dhw: 'Sıcak su COP', cop_cooling: 'Soğutma EER', cop_total: 'Toplam COP', spf: 'SPF (yıl)', cop_weather: 'Hava düzeltmeli COP', cop_heating_weather: 'Hava düzeltmeli ısıtma COP',
       energy: 'Elektrik', env_energy: 'Çevre enerjisi', energy_heating: 'Isıtma elektriği', energy_dhw: 'Sıcak su elektriği', energy_cooling: 'Soğutma elektriği',
       energy_defrost: 'Defrost elektriği', energy_standby: 'Bekleme', energy_aux: 'Isıtıcı elektriği',
       heat: 'Isı', heat_heating: 'Isıtma ısısı', heat_dhw: 'Sıcak su ısısı', heat_cooling: 'Soğutma gücü', heat_defrost: 'Defrost ısısı',
       starts: 'Kompresör çalışmaları', cycles_heating: 'Isıtma çevrimleri', cycles_dhw: 'Sıcak su çevrimleri', cycles_cooling: 'Soğutma çevrimleri', defrosts: 'Defrostlar',
       hours: 'Kompresör saati', hours_per_start: 'Çalışma başına süre', load_classes: 'Yük sınıfları 1-5', aux_hours: 'Isıtıcı saati', aux_starts: 'Isıtıcı çalışmaları',
+      hours_heating: 'Isıtma süresi', hours_dhw: 'Sıcak su süresi', hours_defrost: 'Defrost süresi',
       spread: 'Sıcaklık farkı', volume: 'Debi', heat_estimated: 'Isı gücü', power: 'Güç', heat_live: 'Isı gücü', compressor_speed: 'Kompresör',
       source_spread: 'Kaynak farkı', outdoor: 'Dış', dhw_top: 'Boyler', room: 'Oda', brine_pressure: 'Salamura basıncı', hc_pressure: 'Isıtma basıncı', hc_spread: 'Devre farkı', pv_share: 'Bugünkü güneş payı',
-      pv_boost_share: 'Isıtmada güneş fazlası payı', pv_production: 'Güneş üretimi', solar_thermal: 'Güneş kolektörü', cost: 'Maliyet', dhw_loss: 'Boyler bekleme kaybı',
+      pv_boost_share: 'Isıtmada güneş fazlası payı', pv_production: 'Güneş üretimi', solar_thermal: 'Güneş kolektörü', cost: 'Maliyet', dhw_loss: 'Boyler bekleme kaybı', last_heating_run: 'Son ısıtma çalışması',
     },
-    periods: { now: 'şimdi', today: 'bugün', yesterday: 'dün', week: 'hafta', month: 'ay', year: 'yıl', total: 'toplam' },
+    periods: { now: 'şimdi', today: 'bugün', yesterday: 'dün', week: 'hafta', month: 'ay', last_month: 'geçen ay', year: 'yıl', total: 'toplam' },
     modes: {
       idle: 'Beklemede', heating: 'Isıtma', dhw: 'Sıcak su', cooling: 'Soğutma', defrost: 'Defrost', blocked: 'Kilitli',
       frost: 'Don koruma', circulate: 'Sirkülasyon', off: 'Kapalı', legionella: 'Lejyonella', trailing: 'Ardıl çalışma',
@@ -2363,6 +2368,9 @@ const HFC_EDITOR = {
     tiles_custom_help: 'Off: default tiles. On: pick tiles and periods from what this installation provides; an empty list hides the row.',
     tiles_yaml: 'Some tiles have their own name, entity, price or action: edit them in YAML.',
     tile_entity: 'Add a Home Assistant entity as a tile', tile_entity_help: 'The tile goes to the end of the list. It can be named below.',
+    tiles_add_help: 'Add a value with "Add"; its period (today, month, 7 days …) is chosen in the fields below.',
+    tile_pick: 'Tile', tile_period: 'Period', period_trend: 'with trend',
+    tile_period_help: 'Pick a tile, then its period. 7 and 30 days show an arrow for the trend against as many days before.',
     tile_names: 'Names of the tiles', tile_name: 'Name: {tile}', tile_preview: 'Shows: {value}',
     price_fixed: 'Electricity price per kWh', price_entity: 'Electricity price entity',
     price_help: 'Enables the cost tile. With an entity that has long-term statistics (e.g. a dynamic tariff), the cost is billed per hour.',
@@ -2469,6 +2477,9 @@ const HFC_EDITOR = {
     tiles_custom_help: 'Aus: Standardkacheln. An: Kacheln und Zeiträume aus dem wählen, was diese Anlage liefert; eine leere Liste blendet die Zeile aus.',
     tiles_yaml: 'Einige Kacheln haben einen eigenen Namen, eine eigene Entität, einen Preis oder eine Aktion: im YAML bearbeiten.',
     tile_entity: 'Home-Assistant-Entität als Kachel hinzufügen', tile_entity_help: 'Die Kachel kommt ans Ende der Liste. Unten lässt sie sich benennen.',
+    tiles_add_help: 'Mit „Hinzufügen“ einen Wert wählen; den Zeitraum (heute, Monat, 7 Tage …) in den Feldern darunter.',
+    tile_pick: 'Kachel', tile_period: 'Zeitraum', period_trend: 'mit Trend',
+    tile_period_help: 'Kachel wählen, dann ihren Zeitraum. 7 und 30 Tage zeigen einen Pfeil für den Trend gegenüber gleich vielen Tagen davor.',
     tile_names: 'Namen der Kacheln', tile_name: 'Name: {tile}', tile_preview: 'Zeigt: {value}',
     price_fixed: 'Strompreis je kWh', price_entity: 'Strompreis-Entität',
     price_help: 'Schaltet die Kostenkachel frei. Mit einer Entität mit Langzeitstatistik (z. B. dynamischer Tarif) werden die Kosten stundengenau abgerechnet.',
@@ -3039,9 +3050,10 @@ const HFC_EDITOR = {
     preset: 'Ön ayar', prefix: 'Önek (boş = otomatik bul)', device: 'Cihaz (isteğe bağlı, ön ayarı sınırlar)',
     title: 'Başlık', language: 'Dil', power_threshold: 'Çalışıyor sayılır, üstünde (W)', hc_type: 'Isıtıcı yüzey',
     power_sources: 'Güneş / batarya / şebeke', ps_auto: 'Enerji panosu, aşağıda verilmedikçe', ps_manual: 'Yalnız aşağıdaki sensörler',
-    source_type: 'Isı kaynağı', src_air: 'Hava', src_brine: 'Toprak (salamura)', src_water: 'Yeraltı suyu',
+    source_type: 'Isı kaynağı', src_air: 'Hava', src_brine: 'Toprak (salamura)', src_water: 'Yeraltı suyu', src_exhaust: 'Egzoz havası (havalandırma)',
+    condenser: 'Kondenser', condenser_water: 'Isı pompasında (depoya su hatları)', condenser_tank: 'Kombine depoda (su hattı yok)',
     hc_count: 'Isıtma devreleri', hc2_type: '2. devre ısıtıcısı', hc3_type: '3. devre ısıtıcısı', hc4_type: '4. devre ısıtıcısı', hc5_type: '5. devre ısıtıcısı', hc6_type: '6. devre ısıtıcısı',
-    unit_style: 'Ünite çizimi', unit_auto: 'Otomatik (ön ayardan)', unit_generic: 'Genel (fan)',
+    unit_style: 'Ünite çizimi', unit_auto: 'Otomatik (ön ayardan)', unit_generic: 'Genel (fan)', unit_lambda: 'Lambda EU-L', unit_vaillant: 'Vaillant aroTHERM plus', unit_vaillant_pro: 'Vaillant aroTHERM pro', unit_panasonic: 'Panasonic Aquarea', unit_viessmann: 'Viessmann Vitocal', unit_bosch: 'Bosch Compress 5800i / 6800i AW', unit_bosch_cs8800i: 'Bosch Compress 8800i AW', unit_bosch_compact: 'Bosch Compress 3800i AW', unit_bosch_square: 'Bosch Compress 5000 AW', unit_bosch_tall: 'Bosch Compress 7001i AW', unit_bosch_tall_silent: 'Bosch Compress 7400i AW', unit_buderus: 'Buderus Logatherm WLW MB AR', unit_buderus_compact: 'Buderus Logatherm WLW166i', unit_buderus_tall: 'Buderus Logatherm WLW196i AR', unit_buderus_tall_indoor: 'Buderus Logatherm WLW196i IR', unit_buderus_tall_silent: 'Buderus Logatherm WLW196i AR S+', unit_saunier: 'Saunier Duval GeniaAir', unit_samsung: 'Samsung EHS Mono', unit_wolf: 'Wolf CHA', unit_kronoterm: 'Kronoterm ADAPT', unit_alpha_innotec: 'Alpha Innotec Hybrox', unit_stiebel: 'Stiebel Eltron WPL-A',
     unit_size: 'Ünite çiziminin boyutu', size_pana_medium: '1 fan (3 - 9 kW)', size_pana_large: '2 fan (T-CAP, 12 ve 16 kW)', size_compact_medium: '1 fan', size_compact_large: '2 fan', size_wide_medium: '4 - 7 kW', size_wide_large: '10 ve 12 kW', size_small: '3,5 / 5,5 kW (1 fan, alçak)', size_medium: '7,5 kW (1 fan)', size_large: '10,5 / 12,5 kW (2 fan)',
     timeline: 'Çalışma modu zaman çizelgesi', timeline_hours: 'Zaman çizelgesi uzunluğu (saat)', timeline_details: 'Zaman çizelgesi altında çalışma ayrıntıları', timeline_marks: 'Rozetleri (ör. Boost) ek şerit olarak göster',
     layout: 'Yerleşim', layout_default: 'Varsayılan', layout_compact: 'Sıkışık (dar sütunlar)', layout_wide: 'Geniş (kutucuklar şemanın yanında)', layout_wall: 'Duvar ekranı (büyük, kontroller gizlenir)',
@@ -3049,7 +3061,7 @@ const HFC_EDITOR = {
     flow_speed: 'Animasyon hızı', source_spread: 'Kaynak farkını göster',
     theme: 'Kart teması', theme_auto: 'Otomatik (pano)', theme_night: 'Gece', theme_contrast: 'Yüksek kontrast', fullscreen: 'Tam ekran düğmesi', diagnostic: 'Tanı raporu düğmesi',
     wall_timeout: 'Kontrolleri gizle (saniye, 0 = asla)',
-    hc_flow_label: 'Devre gidiş sıcaklığını göster', hc_return_label: 'Devre dönüş sıcaklığını göster', dew_point_margin: 'En az çiy noktası payı (K)', narrow_values: 'Dar kartlarda tank alt değerleri, sıcak su hedefi, devre dönüşü ve debiler kalsın', narrow_focus: 'Telefon odağı: dar kartlarda ana değerler büyük, ikincil değerler altta tek satır', flow_rate_unit: 'Debi birimi', buffer_values: 'Tampon sıcaklığı vurgusu', buffer_values_default: 'Üst değer öne çıkar (varsayılan)', buffer_values_equal: 'Tüm değerler eşit', storage: 'Depolama', storage_separate: 'Ayrı boyler ve tampon tank', storage_combined: 'Kombine depo (tek tank, sıcak su bölgesi üstte)', buffer: 'Paralel tampon tank (sensörsüz de)', dhw_type: 'Sıcak su hazırlama', dhw_type_coil: 'Serpantinli boyler', dhw_type_fresh_water: 'Taze su istasyonu (tampon veya kombine depo üzerinde)', dhw_type_tank_in_tank: 'Tank içinde tank (kombine depo)', series_buffer: 'Dönüşte seri tampon', series_bypass: 'Baypas vanalı seri tampon (kapalı: devreler defrostta çalışır)', primary_pump: 'Birincil pompa', hc_name: '1. devre adı', hc2_name: '2. devre adı', hc3_name: '3. devre adı', hc4_name: '4. devre adı', hc5_name: '5. devre adı', hc6_name: '6. devre adı',
+    hc_flow_label: 'Devre gidiş sıcaklığını göster', hc_return_label: 'Devre dönüş sıcaklığını göster', dew_point_margin: 'En az çiy noktası payı (K)', narrow_values: 'Dar kartlarda tank alt değerleri, sıcak su hedefi, devre dönüşü ve debiler kalsın', narrow_focus: 'Telefon odağı: dar kartlarda ana değerler büyük, ikincil değerler altta tek satır', flow_rate_unit: 'Debi birimi', spread_unit: 'Sıcaklık farkları için birim', buffer_values: 'Tampon sıcaklığı vurgusu', buffer_values_default: 'Üst değer öne çıkar (varsayılan)', buffer_values_equal: 'Tüm değerler eşit', storage: 'Depolama', storage_separate: 'Ayrı boyler ve tampon tank', storage_combined: 'Kombine depo (tek tank, sıcak su bölgesi üstte)', buffer: 'Paralel tampon tank (sensörsüz de)', dhw_type: 'Sıcak su hazırlama', dhw_type_coil: 'Serpantinli boyler', dhw_type_fresh_water: 'Taze su istasyonu (tampon veya kombine depo üzerinde)', dhw_type_tank_in_tank: 'Tank içinde tank (kombine depo)', series_buffer: 'Dönüşte seri tampon', series_bypass: 'Baypas vanalı seri tampon (kapalı: devreler defrostta çalışır)', primary_pump: 'Birincil pompa', hc_name: '1. devre adı', hc2_name: '2. devre adı', hc3_name: '3. devre adı', hc4_name: '4. devre adı', hc5_name: '5. devre adı', hc6_name: '6. devre adı',
     sec_hc2: '2. ısıtma devresi', sec_hc3: '3. ısıtma devresi', sec_hc4: '4. ısıtma devresi', sec_hc5: '5. ısıtma devresi', sec_hc6: '6. ısıtma devresi', sec_details: 'Ayrıntılar: çalışma', sec_refrigerant: 'Ayrıntılar: soğutucu devresi', sec_cutouts: 'Ayrıntılar: kesme sayaçları',
     controls: 'Hızlı kontroller (anahtar, düğme, seçim, sayı …)', details_open: 'Ayrıntılar açık başlasın',
     from_preset: 'Ön ayar buldu', more_fields: 'Diğer alanlar',
@@ -3123,13 +3135,14 @@ const HFC_EDITOR = {
     hc_pressure_min: 'Isıtma basıncı uyarı, altında', hc_pressure_crit: 'Isıtma basıncı kritik, altında', hc_pressure_max: 'Isıtma basıncı uyarı, üstünde',
     sec_hp: 'Isı pompası', sec_boiler: 'Kombi / ikinci ısı üreticisi', sec_storage: 'Depolama', sec_hc: 'Isıtma devresi ve ev', sec_power: 'Güç kaynakları', sec_stats: 'İstatistikler',
     mode: 'Çalışma modu (durum metni)', status: 'Durum / alt durum (metin)', compressor: 'Kompresör çalışıyor (açık/kapalı ya da 0 üstü frekans / hız)', defrost: 'Defrost etkin (açık/kapalı)', fan_speed: 'Fan hızı (rpm ya da açık/kapalı)', power: 'Isı pompasının elektrik gücü (W veya kW)',
-    heat: 'Isı gücü (kW veya W)', flow: 'Isı pompası gidiş sıcaklığı (°C)', return: 'Isı pompası dönüş sıcaklığı (°C)', volume: 'Isı pompası devresinin debisi (l/h veya l/min, birincil pompa)', primary_pump_state: 'Birincil pompa çalışıyor (açık/kapalı; varsayılan: debiden)',
+    heat: 'Isı gücü (kW veya W)', system_pressure: 'Isıtma sisteminin basıncı (bar), ısı pompası dönüşünde çizilir', flow: 'Isı pompası gidiş sıcaklığı (°C)', return: 'Isı pompası dönüş sıcaklığı (°C)', volume: 'Isı pompası devresinin debisi (l/h veya l/min, birincil pompa)', primary_pump_state: 'Birincil pompa çalışıyor (açık/kapalı; varsayılan: debiden)',
     boiler_state: 'Kombi çalışıyor (açık/kapalı ya da 0 üstü güç)', boiler_power: 'Kombi gücü (W veya kW)', boiler_flow: 'Kombi gidiş sıcaklığı (°C)',
     source_volume: 'Salamura veya kuyu devresinin debisi (l/h veya l/min, hava için değil)', source_in: 'Kaynak giriş sıcaklığı (°C: hava, salamura veya kuyu suyu girişi)', outdoor: 'Dış sıcaklık (°C)',
     valve: 'Üç yollu vana sıcak suya (açık/kapalı ya da Tank/Room gibi bir durum)', bypass_valve: 'Seri tampon baypas vanası (açık = baypas; varsayılan: defrost)',
     pv_boost: 'Güneş fazlası modu (açık ya da 0 üstü güç)',
     sg_ready: 'SG-Ready / şebeke kilidi durumu (1–4 veya metin)',
     dhw_top: 'Boyler üst (°C)', dhw_middle: 'Boyler orta (°C)', dhw_bottom: 'Boyler alt (°C)', dhw_target: 'Sıcak su hedefi (°C)', dhw_mode: 'Sıcak su modu (durum metni)',
+    dhw_enabled: 'Sıcak su açık ("off" durumu ön ayarın sıcak su kuralını durdurur)', dhw_once: 'Tek seferlik sıcak su ısıtma (açık/kapalı)',
     circulation: 'Sirkülasyon pompası çalışıyor (açık/kapalı)', circulation_start: 'Sirkülasyon penceresi başlangıcı', circulation_end: 'Sirkülasyon penceresi bitişi', circulation_schedule: 'Sirkülasyon programı (sonraki değişim)', dhw_loss_sensor: 'Boyler bekleme kaybı ölçümü (°C)', buffer_top: 'Tampon üst (°C)', buffer_middle: 'Tampon orta (°C)', buffer_bottom: 'Tampon alt (°C)', buffer_mode: 'Tampon modu (durum metni)',
     hc_flow: 'Devre gidiş sıcaklığı (°C)', hc_return: 'Devre dönüş sıcaklığı (°C)', hc_setpoint: 'Devre gidiş hedefi (°C)',
     hc_mode: 'Devre modu (durum metni)', hc_pump: 'Devre pompası çalışıyor (açık/kapalı)', hc_volume: 'Isıtma devresinin debisi (l/h veya l/min, devre pompası)', hc_curve_offset: 'Isıtma eğrisi kaydırma (K)', hc_mixer: 'Karışım vanası konumu veya payı (%, bildirildiği gibi)', hc_mixer_opening: 'Karışım vanası motoru açıyor (açık/kapalı)', hc_mixer_closing: 'Karışım vanası motoru kapatıyor (açık/kapalı)', hc_pressure: 'Isıtma devresi basıncı (bar)', brine_pressure: 'Salamura devresi basıncı (bar)',
@@ -3682,7 +3695,13 @@ class HeatpumpFlowCard extends HTMLElement {
         // Tile selection (editor only): a sortable list of the tiles this installation can fill.
         ...(tiles ? [{ name: 'tiles_custom', selector: { boolean: {} } }] : []),
         ...(tiles && Array.isArray(config.tiles)
-          ? [{ name: 'tiles', selector: { select: { multiple: true, reorder: true, mode: 'dropdown', options: tiles.options } } },
+          ? [{ name: 'tiles', selector: { select: { multiple: true, reorder: true, mode: 'dropdown', options: tiles.choices || tiles.options } } },
+            // Second step (#481): the period of a chosen statistic; 7 and 30 days add the trend.
+            ...(tiles.steps?.length ? [{ type: 'grid', name: '', schema: [
+              { name: 'tile_pick', selector: { select: { mode: 'dropdown', options: tiles.steps.map((s) => ({ value: s.value, label: s.label })) } } },
+              { name: 'tile_period', selector: { select: { mode: 'dropdown', options: (tiles.periodWords[tiles.focus?.key] || [])
+                .map((p) => ({ value: p.value, label: HFC_ROLLING[p.value] ? `${p.word} · ${L.period_trend}` : p.word })) } } },
+            ] }] : []),
             { name: 'tile_entity', selector: { entity: {} } },
             // Names of the tiles that show an entity or a card value (#481).
             ...(tiles.names.length ? [{ type: 'expandable', name: 'tile_names', flatten: true, title: L.tile_names,
@@ -5749,9 +5768,11 @@ class HeatpumpFlowCard extends HTMLElement {
     const shown = new Set();
     // The cost tile needs a price (global `price`).
     const hasPrice = config.price !== undefined && config.price !== null && config.price !== '';
+    const steps = new Set();
     Object.keys(HFC_TILES).filter((k) => k !== 'cost' || hasPrice).forEach((key) => {
       const periods = probe._tilePeriods(key);
       periodsOf[key] = periods;
+      if (periods.length > 1) steps.add(key);
       periods.forEach((p) => {
         options.push({ value: periods.length === 1 ? key : `${key}:${p}`, label: probe._tileLabel(key, p, I) });
         const id = probe._tileSource(key, p)?.id;
@@ -5817,7 +5838,37 @@ class HeatpumpFlowCard extends HTMLElement {
     const defaults = Array.isArray(presetDefaults)
       ? presetDefaults.map((t) => HeatpumpFlowCard._tileSpec(t)).filter((s) => s?.key && periodsOf[s.key]?.length).map((s) => valueOf(s.key, s.period))
       : ['cop_heating', 'cop_dhw', 'energy', 'starts', 'spread', 'volume', 'heat_estimated'].filter((k) => periodsOf[k].length).map((k) => valueOf(k));
-    return { options, value, raw, names, yaml, defaults, extra };
+    // Two steps (#481, beta.1 feedback): the add list of the editor (`choices`) names every statistic with several periods once
+    // (`add:<key>`), and its period is chosen afterwards in a field of its own, where 7 and 30 days say that they bring the trend. A
+    // list of every statistic in every period had 274 entries on a Lambda. `options` keeps every statistic and period.
+    const named = new Set();
+    const choices = [];
+    options.forEach((o) => {
+      const [k, p] = o.value.split(':');
+      if (!p || !steps.has(k) || !HFC_TILES[k]) { choices.push(o); return; }
+      if (!named.has(k)) { named.add(k); choices.push({ value: `add:${k}`, label: probe._tileLabel(k, null, I) }); }
+      // A chosen tile stays an option, so its chip keeps its name.
+      if (value.includes(o.value)) choices.push(o);
+    });
+    // Second step: the chosen statistics with more than one period, and the words of their periods.
+    const chosen = value.map((v) => v.split(':')).filter(([k, p]) => p && steps.has(k) && HFC_TILES[k])
+      .map(([k, p]) => ({ value: `${k}:${p}`, key: k, period: p, label: probe._tileLabel(k, p, I) }));
+    const periodWords = Object.fromEntries([...steps].map((k) => [k, periodsOf[k].map((p) => ({ value: p, word: String(I.periods[p] ?? I.rolling[p] ?? p) }))]));
+    return { options, choices, value, raw, names, yaml, defaults, extra, periodsOf, steps: chosen, periodWords, default: (key) => probe._tileDefault(key) };
+  }
+
+  // Editor, first step (#481): a statistic from the add list comes with its usual period, or with the first one not chosen yet, so a
+  // second chip of the same statistic is possible; the second step then changes its period.
+  static _tilesAdded(tiles, selected) {
+    let added = null;
+    const list = [];
+    selected.forEach((v) => {
+      if (!String(v).startsWith('add:')) { list.push(v); return; }
+      const key = v.slice(4); const periods = tiles.periodsOf[key] || [];
+      const p = [tiles.default(key), ...periods].find((q) => q && periods.includes(q) && !selected.includes(`${key}:${q}`) && !list.includes(`${key}:${q}`));
+      if (p) { added = `${key}:${p}`; list.push(added); }
+    });
+    return { list, added };
   }
 
   // Editor: the tile list to store for the selected option values. A tile that stays is kept as it stands in the configuration, with
@@ -9357,7 +9408,7 @@ HeatpumpFlowCard.styles = `
   .ctl select, .ctl input { font: inherit; color: inherit; background: transparent; border: none; outline: none; max-width: 11em; }
   .ctl input { width: 3.5em; }
   .ctl em { font-style: normal; color: var(--hfc-muted); }
-  .ctl select option { color: #000; }
+  .ctl select option { color: var(--primary-text-color, #000); background: var(--card-background-color, var(--ha-card-background, #fff)); }
   .drawer { margin: 6px 4px 0; }
   .drawer-toggle { font: inherit; font-size: .9em; color: var(--hfc-muted); background: none; border: none; cursor: pointer; padding: 4px 0; display: inline-flex; align-items: center; gap: 4px; }
   .drawer-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s; }
@@ -9795,6 +9846,8 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     this._presetErrorOk = r.preset?.error_ok || [];
     const tiles = HeatpumpFlowCard._tileOptions(this._config, r, this._hass);
     this._tiles = tiles;
+    // Second step: the tile whose period the fields show, the one just added or picked, else the last one.
+    tiles.focus = tiles.steps.find((s) => s.value === this._tileFocus) || tiles.steps[tiles.steps.length - 1] || null;
     // Valve states (#126): the preset map with the configuration on top, shown as two lists of raw states.
     const valveId = r.entities.valve;
     const valveState = valveId ? this._hass.states[valveId]?.state : undefined;
@@ -9880,7 +9933,8 @@ class HeatpumpFlowCardEditor extends HTMLElement {
         return `${r.preset.tested ? status : `${status} ${L.untested_help}`}${also}`;
       }
       if (s.name === 'tiles_custom') return L.tiles_custom_help;
-      if (s.name === 'tiles') return tiles.yaml ? L.tiles_yaml : '';
+      if (s.name === 'tiles') return tiles.yaml ? `${L.tiles_add_help} ${L.tiles_yaml}` : L.tiles_add_help;
+      if (s.name === 'tile_period') return L.tile_period_help;
       if (s.name === 'tile_entity') return L.tile_entity_help;
       const named = tiles.names.find((t) => t.field === s.name);
       if (named) return named.preview ? L.tile_preview.replace('{value}', named.preview) : '';
@@ -9914,6 +9968,8 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     if (custom) {
       data.tiles = tiles.value;
       data.tile_entity = this._tilePicked || '';
+      data.tile_pick = tiles.focus?.value || '';
+      data.tile_period = tiles.focus?.period || '';
       tiles.names.forEach((t) => { data[t.field] = t.name; });
     }
     this._priceShown = custom;
@@ -10028,7 +10084,21 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     if (Object.keys(ents).length) config.entities = ents; else delete config.entities;
     // Tiles: off = default tiles; switched on = start from the default set; tiles with own options stay as in YAML.
     const picked = value.tile_entity && value.tile_entity !== this._tilePicked ? value.tile_entity : '';
-    delete config.tiles_custom; delete config.tile_entity;
+    delete config.tiles_custom; delete config.tile_entity; delete config.tile_pick; delete config.tile_period;
+    // Two steps (#481): a statistic from the add list gets its period; picking a tile shows its period; a new period replaces the
+    // period of that tile in its place.
+    let selected = Array.isArray(value.tiles) ? value.tiles : null;
+    if (selected && this._tiles) {
+      const { list, added } = HeatpumpFlowCard._tilesAdded(this._tiles, selected);
+      selected = list;
+      const shown = this._tiles.focus;
+      if (added) this._tileFocus = added;
+      else if (value.tile_pick && value.tile_pick !== shown?.value) this._tileFocus = value.tile_pick;
+      else if (shown && value.tile_period && value.tile_period !== shown.period) {
+        const next = `${shown.key}:${value.tile_period}`; const at = selected.indexOf(shown.value);
+        if (at >= 0 && !selected.includes(next)) { selected = selected.map((v, n) => (n === at ? next : v)); this._tileFocus = next; }
+      }
+    }
     Object.keys(config).filter((k) => /^tile_name_\d+$/.test(k)).forEach((k) => { delete config[k]; });
     delete config.price_fixed; delete config.price_entity;
     if (this._priceShown) {
@@ -10038,7 +10108,7 @@ class HeatpumpFlowCardEditor extends HTMLElement {
     }
     if (!value.tiles_custom) delete config.tiles;
     else if (!Array.isArray(this._config.tiles)) config.tiles = this._tiles.defaults;
-    else config.tiles = Array.isArray(value.tiles) ? HeatpumpFlowCard._tilesToStore(this._tiles, value.tiles, value, picked) : this._config.tiles;
+    else config.tiles = selected ? HeatpumpFlowCard._tilesToStore(this._tiles, selected, value, picked) : this._config.tiles;
     // The entity picker keeps showing its choice while the form passes the same empty value: it takes the entity once, then is emptied.
     if (picked) {
       this._tilePicked = picked;
