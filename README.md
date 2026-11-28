@@ -61,7 +61,7 @@ Which preset should come next? Vote in the [poll](https://github.com/Sturmi77/he
 
 The current release is **[0.20.0](https://github.com/Sturmi77/heatpump-hydraulic-card/releases/tag/v0.20.0)**: the editor asks where the integration cannot tell how the installation is built (buffer, pump, first heating circuit), new presets for NIBE F series, Samsung EHS with EHS Sentinel, Aira and Stiebel Eltron LWZ / Tecalor THZ, ground-source heat pumps in Bosch/Buderus Home Comfort, each heating circuit's flow from its own flow rate and the primary pump's own state, defrosts and starts counted from the history, labels that move to a free place, and Lithuanian. What changed is in the [release notes](https://github.com/Sturmi77/heatpump-hydraulic-card/releases) and the [changelog](CHANGELOG.md), what comes next in the [development plan](docs/ROADMAP.md). Reports from real installations help most, above all for the presets marked *untested*: the [call for testers](https://github.com/Sturmi77/heatpump-hydraulic-card/discussions/453) or the [preset feedback form](https://github.com/Sturmi77/heatpump-hydraulic-card/issues/new?template=preset_feedback.yml).
 
-The pre-release **[0.21.0-beta.1](https://github.com/Sturmi77/heatpump-hydraulic-card/releases/tag/v0.21.0-beta.1)** is for testing: any value of the drawing or the details and any Home Assistant entity as a tile, chosen in the editor; tiles for the previous month, the last heating run, 7 and 30 days with their trend and a weather-adjusted COP; the NIBE F370 and F470 with exhaust air; power at the heater rods; the system pressure with a gauge at the heat pump; defrost per unit of a cascade; and Turkish. HACS shows it once beta versions are enabled for the card.
+The pre-release **[0.21.0-beta.2](https://github.com/Sturmi77/heatpump-hydraulic-card/releases/tag/v0.21.0-beta.2)** is for testing: any value of the drawing or the details and any Home Assistant entity as a tile, chosen in the editor in two steps (the value, then its period); tiles for the previous month, the last heating run, 7 and 30 days with their trend and a weather-adjusted COP; the NIBE F370 and F470 with exhaust air; power at the heater rods; the system pressure with a gauge at the heat pump; defrost per unit of a cascade; and Turkish. HACS shows it once beta versions are enabled for the card.
 
 ## Features
 
@@ -217,12 +217,12 @@ The card follows the Home Assistant language. Built in, and how complete (genera
 | Language | Card texts | Editor |
 |---|---|---|
 | Deutsch (`de`) | 100 % | 100 % |
-| Polski (`pl`) | 91 % (19 missing) | 91 % (25 missing) |
-| Slovenčina (`sk`) | 91 % (19 missing) | 91 % (25 missing) |
-| Čeština (`cs`) | 91 % (19 missing) | 91 % (25 missing) |
-| Nederlands (`nl`) | 91 % (19 missing) | 91 % (25 missing) |
-| Lietuvių (`lt`) | 91 % (19 missing) | 0 % (297 missing) |
-| Türkçe (`tr`) | 91 % (19 missing) | 89 % (30 missing) |
+| Polski (`pl`) | 91 % (19 missing) | 90 % (30 missing) |
+| Slovenčina (`sk`) | 91 % (19 missing) | 90 % (30 missing) |
+| Čeština (`cs`) | 91 % (19 missing) | 90 % (30 missing) |
+| Nederlands (`nl`) | 91 % (19 missing) | 90 % (30 missing) |
+| Lietuvių (`lt`) | 91 % (19 missing) | 0 % (302 missing) |
+| Türkçe (`tr`) | 100 % | 98 % (5 missing) |
 <!-- /coverage:languages -->
 
 Your own wording or another language with `texts` ([custom texts](docs/CONFIGURATION.md#custom-texts-and-languages)); a new built-in language for everybody, editor included: [docs/TRANSLATING.md](docs/TRANSLATING.md).

@@ -1,1 +1,0 @@
-- Turkish texts for 0.21.0: exhaust air, 7- and 30-day trends, system pressure, the new tiles and editor labels.

@@ -46,12 +46,12 @@ English is the reference. A text without a translation shows in English.
 | Language | Card texts | Editor |
 |---|---|---|
 | Deutsch (`de`) | 100 % | 100 % |
-| Polski (`pl`) | 91 % (19 missing) | 91 % (25 missing) |
-| Slovenčina (`sk`) | 91 % (19 missing) | 91 % (25 missing) |
-| Čeština (`cs`) | 91 % (19 missing) | 91 % (25 missing) |
-| Nederlands (`nl`) | 91 % (19 missing) | 91 % (25 missing) |
-| Lietuvių (`lt`) | 91 % (19 missing) | 0 % (297 missing) |
-| Türkçe (`tr`) | 91 % (19 missing) | 89 % (30 missing) |
+| Polski (`pl`) | 91 % (19 missing) | 90 % (30 missing) |
+| Slovenčina (`sk`) | 91 % (19 missing) | 90 % (30 missing) |
+| Čeština (`cs`) | 91 % (19 missing) | 90 % (30 missing) |
+| Nederlands (`nl`) | 91 % (19 missing) | 90 % (30 missing) |
+| Lietuvių (`lt`) | 91 % (19 missing) | 0 % (302 missing) |
+| Türkçe (`tr`) | 100 % | 98 % (5 missing) |
 
 ## Details per preset
 
