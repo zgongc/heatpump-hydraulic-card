@@ -1,0 +1,1 @@
+- Turkish editor labels for the two-step tile selection.
