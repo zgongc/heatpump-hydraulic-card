@@ -8005,6 +8005,19 @@
     check(light && light.color === 'rgb(33, 33, 33)' && light.background === 'rgb(255, 255, 255)', `select options on a light theme: dark text on the card background (${JSON.stringify(light)})`);
   }
 
+  // 28. a calendar whose event marks the circulation window is on/off like a binary sensor: the editor check accepts it, the card
+  // runs the circulation while an event is on
+  {
+    const cal = (state) => ({ state, attributes: { message: 'Circulation', start_time: '2026-11-28 06:00:00', end_time: '2026-11-28 07:00:00' } });
+    check(hfcKindOf('circulation') === 'onoff' && C._fit('onoff', 'calendar.dhw_circulation', cal('on')).verdict !== 'bad'
+      && C._fit('onoff', 'calendar.dhw_circulation', cal('off')).verdict !== 'bad', 'a calendar is accepted for the circulation (on/off)');
+    check(C._fit('onoff', 'light.hall', { state: 'on', attributes: {} }).verdict === 'bad', 'other domains are still reported for on/off keys');
+    const card = mount({ entities: { circulation: 'calendar.dhw_circulation', dhw_top: 'sensor.t' } },
+      hassOf(toStates({ 'calendar.dhw_circulation': cal('on'), 'sensor.t': ['50', '°C'] }))); await wait(20);
+    check(card._on('circulation'), 'the circulation runs while the calendar event is on');
+    card.remove();
+  }
+
   // 30. Two-step tile selection (#481, feedback on 0.21.0-beta.1): the add list names a statistic once, its period is chosen in a
   // field of its own, and 7 and 30 days say that they bring the trend. Before, a Lambda offered 274 entries, one per statistic and period.
   {
