@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.21.0-beta.2 – 2026-11-28
+- The editor chooses tiles in two steps (#481, feedback on 0.21.0-beta.1): the add list names every statistic once instead of once per period (274 entries on a Lambda), and the fields **Tile** and **Period** below it set the period of a chosen tile, where 7 and 30 days say that they show the trend.
+- The circulation accepts a calendar entity (an event marks the circulation window), as do the other on/off keys; the editor check no longer reports it as the wrong kind of entity.
+- Select controls: the open list takes the text and background colour of the card, so its options are readable on a dark theme instead of black on a dark list.
+- Turkish texts for 0.21.0: exhaust air, 7- and 30-day trends, system pressure, the new tiles and editor labels.
+
 ## 0.21.0-beta.1 – 2026-11-28
 - `defrost` also takes a mode text (`defrost`, or what `mode_map` maps to defrost) and a list with one entity per unit of a cascade: the schematic, the timeline and the run details show defrost while any unit defrosts, and the defrosts of all units add up (#173, buliwyf42).
 - NIBE F370 and F470 (#253): recognised by their model and drawn as they are built, with the condenser in the combined storage, refrigerant lines instead of a water line, and exhaust and vented air as the source. BT2, BT3 and the supply pump belong to the heating circuit. Other NIBE models are unchanged. Thanks to @wlouckx.
